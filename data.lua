@@ -21,6 +21,7 @@ data:extend(
             },
         })
 
+require "prototypes.projectiles"
 require "prototypes.building.lab"
 require "prototypes.enemy.miniufo"
 require "prototypes.enemy.marspeople"

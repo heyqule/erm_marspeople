@@ -5,7 +5,7 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
-local ZergSound = require('__erm_zerg__/prototypes/sound')
+local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'miniufo'
 
@@ -32,13 +32,13 @@ local incremental_cold_resistance = 80
 
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_laser_damage = 10
-local incremental_laser_damage = 50
+local base_laser_damage = 1
+local incremental_laser_damage = 6
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_attack_speed = 90
-local incremental_attack_speed = 45
+local base_attack_speed = 120
+local incremental_attack_speed = 60
 
 local attack_range = 9
 
@@ -95,32 +95,26 @@ function ErmMarsPeople.make_miniufo(level)
             ai_settings = biter_ai_settings,
             attack_parameters = {
                 type = "projectile",
-                ammo_category = 'biological',
+                ammo_category = 'marspeople-damage',
                 range = attack_range,
                 min_attack_distance = attack_range - 3,
                 cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
                 cooldown_deviation = 0.1,
+                damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
                 warmup = 12,
                 ammo_type = {
-                    category = "biological",
+                    category = "marspeople-damage",
                     target_type = "direction",
                     action = {
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'hydralisk-projectile',
-                            starting_speed = 0.3,
-                            target_effects = {
-                                {
-                                    type = "damage",
-                                    damage = { amount = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level), type = "acid" },
-                                    apply_damage_to_trees = true
-                                }
-                            }
+                            projectile = 'mini-ufo-projectile',
+                            starting_speed = 0.2,
                         }
                     }
                 },
-                sound = ZergSound.hydralisk_attack(0.75),
+                sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
                 animation = {
                     layers = {
                         {
@@ -190,7 +184,7 @@ function ErmMarsPeople.make_miniufo(level)
                 }
             },
             dying_explosion = "mini-ufo-death",
-            dying_sound = ZergSound.enemy_death('hydralisk', 0.75),
+            dying_sound = ErmMarsPeople_Sound.mars_people_death(0.75),
             corpse = name .. '-corpse'
         },
         {

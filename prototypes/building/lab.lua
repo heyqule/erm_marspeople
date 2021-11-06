@@ -10,7 +10,7 @@ require ("util")
 
 local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
-local ERM_Sound = require('prototypes.sound')
+local Base_Sound = require("__base__/prototypes/entity/sounds")
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 
 
@@ -84,7 +84,7 @@ function ErmMarsPeople.make_lab(level)
             max_health = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level),
             order = MOD_NAME .. "-" .. name,
             subgroup = "enemies",
-            vehicle_impact_sound = ERM_Sound.generic_impact(),
+            vehicle_impact_sound = Base_Sound.generic_impact,
             resistances = {
                 { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
                 { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
