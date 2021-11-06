@@ -33,7 +33,7 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_laser_damage = 1
-local incremental_laser_damage = 6
+local incremental_laser_damage = 7
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
