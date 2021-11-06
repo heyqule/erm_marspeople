@@ -19,7 +19,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "damage",
-                        damage = { amount = 20, type = "laser" },
+                        damage = { amount = 15, type = "laser" },
                         apply_damage_to_trees = true
                     }
                 }
