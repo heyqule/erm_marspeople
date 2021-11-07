@@ -21,7 +21,7 @@ data:extend({
                         type = "damage",
                         damage = { amount = 15, type = "laser" },
                         apply_damage_to_trees = true
-                    }
+                    },
                 }
             }
         },
