@@ -115,7 +115,7 @@ function ErmMarsPeople.make_marspeople(level)
                         }
                     }
                 },
-                sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
+                sound = ErmMarsPeople_Sound.mars_people_attack(0.65),
                 animation = {
                     layers = {
                         {
