@@ -32,7 +32,6 @@ data:extend({
             height = 32,
             priority = "high",
             animation_speed = 0.4,
-            shift = util.by_pixel(0, 32),
         }
     },
     {
@@ -69,7 +68,6 @@ data:extend({
             height = 32,
             priority = "high",
             animation_speed = 0.4,
-            shift = util.by_pixel(16, 24),
             run_mode = "forward-then-backward",
         }
     },

@@ -48,7 +48,7 @@ local incremental_movement_speed = 0.1
 
 -- Misc settings
 local vision_distance = 30
-local pollution_to_join_attack = 20
+local pollution_to_join_attack = 50
 local distraction_cooldown = 20
 
 -- Animation Settings
@@ -67,7 +67,7 @@ function ErmMarsPeople.make_miniufo(level)
             localised_name = { 'entity-name.' .. MOD_NAME .. '/' .. name, level },
             icon = "__erm_marspeople__/graphics/entity/icons/units/" .. name .. ".png",
             icon_size = 64,
-            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid"},
+            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid", "not-flammable"},
             has_belt_immunity = true,
             max_health = ERM_UnitHelper.get_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level),
             order = MOD_NAME .. '/'  .. name .. '/' .. level,
@@ -102,6 +102,7 @@ function ErmMarsPeople.make_miniufo(level)
                 cooldown_deviation = 0.1,
                 damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
                 warmup = 12,
+                projectile_center = util.by_pixel(0, 32),
                 ammo_type = {
                     category = "marspeople-damage",
                     target_type = "direction",
@@ -184,7 +185,7 @@ function ErmMarsPeople.make_miniufo(level)
                 }
             },
             dying_explosion = "mini-ufo-death",
-            dying_sound = ErmMarsPeople_Sound.mars_people_death(0.75),
+            dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.75),
             corpse = name .. '-corpse'
         },
         {
