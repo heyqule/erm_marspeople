@@ -25,6 +25,8 @@ require "prototypes.projectiles"
 require "prototypes.building.lab"
 require "prototypes.enemy.miniufo"
 require "prototypes.enemy.marspeople"
+require "prototypes.enemy.marspeople-fire"
+require "prototypes.enemy.marspeople-icy"
 
 local level = ErmConfig.MAX_LEVELS
 
@@ -32,6 +34,8 @@ for i = 1, level do
     --Units
     ErmMarsPeople.make_miniufo(i)
     ErmMarsPeople.make_marspeople(i)
+    ErmMarsPeople.make_marspeople_fire(i)
+    ErmMarsPeople.make_marspeople_icy(i)
 
     --Building
     ErmMarsPeople.make_lab(i)

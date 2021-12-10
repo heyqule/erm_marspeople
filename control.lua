@@ -48,8 +48,8 @@ local addRaceSettings = function()
         next_attack_threshold = 0, -- Used by system to calculate next move
         units = {
             { 'marspeople' },
-            { 'marspeople' },
-            { 'miniufo' },
+            { 'marspeople-icy' },
+            { 'miniufo','marspeople-fire' },
         },
         current_units_tier = {},
         turrets = {

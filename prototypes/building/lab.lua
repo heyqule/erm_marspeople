@@ -50,8 +50,12 @@ local max_friends_around_to_spawn = 3
 local spawn_table = function(level)
     local res = {}
     --Tire 1
-    res[1] = { MOD_NAME .. '/marspeople/' .. level,           { { 0.0, 0.5 }, { 0.2, 0.5 }, { 0.4, 0.5 }, { 0.6, 0.5 }, { 0.8, 0.5 }, { 1.0, 0.5 } } }
-    res[2] = { MOD_NAME .. '/miniufo/' .. level,           { { 0.0, 0.5 }, { 0.2, 0.5 }, { 0.4, 0.5 }, { 0.6, 0.5 }, { 0.8, 0.5 }, { 1.0, 0.5 } } }
+    res[1] = { MOD_NAME .. '/marspeople/' .. level,           { { 0.0, 0.25 }, { 0.2, 0.25 }, { 0.4, 0.25 }, { 0.6, 0.25 }, { 0.8, 0.25 }, { 1.0, 0.25 } } }
+    res[2] = { MOD_NAME .. '/miniufo/' .. level,           { { 0.0, 0.25 }, { 0.2, 0.25 }, { 0.4, 0.25 }, { 0.6, 0.25 }, { 0.8, 0.25 }, { 1.0, 0.25 } } }
+
+    --Tire 2
+    res[3] = { MOD_NAME .. '/marspeople-fire/' .. level,           { { 0.0, 0.25 }, { 0.2, 0.25 }, { 0.4, 0.25 }, { 0.6, 0.25 }, { 0.8, 0.25 }, { 1.0, 0.25 } } }
+    res[4] = { MOD_NAME .. '/marspeople-icy/' .. level,           { { 0.0, 0.25 }, { 0.2, 0.25 }, { 0.4, 0.25 }, { 0.6, 0.25 }, { 0.8, 0.25 }, { 1.0, 0.25 } } }
 
     return res
 end
