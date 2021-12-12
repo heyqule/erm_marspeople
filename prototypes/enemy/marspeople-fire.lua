@@ -67,7 +67,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
             localised_name = { 'entity-name.' .. MOD_NAME .. '/' .. name, level },
             icon = "__erm_marspeople__/graphics/entity/icons/units/" .. name .. ".png",
             icon_size = 64,
-            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid"},
+            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid", "not-flammable"},
             has_belt_immunity = true,
             max_health = ERM_UnitHelper.get_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level),
             order = MOD_NAME .. '/'  .. name .. '/' .. level,
@@ -98,6 +98,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                 range = attack_range,
                 min_attack_distance = attack_range - 3,
                 turn_range = 0.5,
+                use_shooter_direction = true,
                 projectile_center = util.by_pixel(16, 24),
                 cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
                 cooldown_deviation = 0.1,
@@ -185,7 +186,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
             flags = { "placeable-off-grid", "building-direction-8-way", "not-on-map" },
             selection_box = selection_box,
             selectable_in_game = false,
-            dying_speed = 0.025,
+            dying_speed = 0.015,
             time_before_removed = defines.time.second * 3,
             subgroup = "corpses",
             order = "x" .. name .. level,
@@ -199,8 +200,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                     frame_count = 41,
                     direction_count = 2,
                     axially_symmetrical = false,
-                    scale = unit_scale,
-                    animation_speed = 0.1,
+                    scale = unit_scale
                 }
             }
         }

@@ -54,8 +54,7 @@ data:extend({
             draw_as_glow = true
         },
 
-        duration_in_ticks = 5 * defines.time.second,
-        target_movement_modifier = 0.8,
+        duration_in_ticks = 2 * defines.time.second,
         damage_per_tick = { amount = 2 / defines.time.second, type = "fire" },
         spread_fire_entity = "fire-flame-on-tree",
         fire_spread_cooldown = 30,
@@ -87,6 +86,60 @@ data:extend({
             height = 32,
             priority = "high",
             animation_speed = 0.4,
+        }
+    },
+    {
+        type = "projectile",
+        name = "ufo-projectile",
+        flags = { "not-on-map" },
+        acceleration = 0.005,
+        action = {
+            type = "direct",
+            action_delivery = {
+                type = "instant",
+                target_effects = {
+                    {
+                        type = "damage",
+                        damage = { amount = 30, type = "laser" },
+                        apply_damage_to_trees = true
+                    },
+                }
+            }
+        },
+        animation = {
+            filename = "__erm_marspeople__/graphics/entity/projectiles/ufo-projectile.png",
+            frame_count = 1,
+            width = 8,
+            height = 35,
+            priority = "high",
+            animation_speed = 1,
+        }
+    },
+    {
+        type = "projectile",
+        name = "eye-ufo-projectile",
+        flags = { "not-on-map" },
+        acceleration = 0.005,
+        action = {
+            type = "direct",
+            action_delivery = {
+                type = "instant",
+                target_effects = {
+                    {
+                        type = "damage",
+                        damage = { amount = 20, type = "electric" },
+                        apply_damage_to_trees = true
+                    },
+                }
+            }
+        },
+        animation = {
+            filename = "__erm_marspeople__/graphics/entity/projectiles/eye-ufo-projectile.png",
+            frame_count = 8,
+            width = 32,
+            height = 32,
+            priority = "high",
+            animation_speed = 0.5,
         }
     },
     {
@@ -228,5 +281,37 @@ data:extend({
                 draw_as_glow = true,
             }
         }
-    }
+    },
+    {
+        type = "explosion",
+        name = "marspeople-explosion",
+        flags = { "not-on-map" },
+        animations = {
+            {
+                filename = "__erm_marspeople__/graphics/entity/sfx/explosion.png",
+                width = 96,
+                height = 128,
+                frame_count = 20,
+                animation_speed = 0.3,
+                shift = util.by_pixel(0, 16),
+                draw_as_glow = true,
+            }
+        }
+    },
+    {
+        type = "explosion",
+        name = "marspeople-ground-explosion",
+        flags = { "not-on-map" },
+        animations = {
+            {
+                filename = "__erm_marspeople__/graphics/entity/sfx/ground_explosion.png",
+                width = 128,
+                height = 192,
+                frame_count = 24,
+                animation_speed = 0.4,
+                shift = util.by_pixel(0, 16),
+                draw_as_glow = true,
+            }
+        }
+    },
 })

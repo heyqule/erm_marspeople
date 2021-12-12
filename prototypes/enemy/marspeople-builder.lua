@@ -7,7 +7,7 @@ local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
-local name = 'marspeople'
+local name = 'marspeople-builder'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local hitpoint = 80
@@ -65,7 +65,7 @@ function ErmMarsPeople.make_marspeople(level)
             type = "unit",
             name = MOD_NAME .. '/' .. name .. '/' .. level,
             localised_name = { 'entity-name.' .. MOD_NAME .. '/' .. name, level },
-            icon = "__erm_marspeople__/graphics/entity/icons/units/" .. name .. ".png",
+            icon = "__erm_marspeople__/graphics/entity/icons/units/marspeople.png",
             icon_size = 64,
             flags = { "placeable-enemy", "placeable-player", "placeable-off-grid"},
             has_belt_immunity = true,
@@ -120,7 +120,7 @@ function ErmMarsPeople.make_marspeople(level)
                 animation = {
                     layers = {
                         {
-                            filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-attack.png",
+                            filename = "__erm_marspeople__/graphics/entity/units/marspeople/marspeople-run.png",
                             width = 128,
                             height = 96,
                             frame_count = 22,
@@ -130,7 +130,7 @@ function ErmMarsPeople.make_marspeople(level)
                             animation_speed = 0.6
                         },
                         {
-                            filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-attack.png",
+                            filename = "__erm_marspeople__/graphics/entity/units/marspeople/marspeople-run.png",
                             width = 128,
                             height = 96,
                             frame_count = 22,
@@ -150,7 +150,7 @@ function ErmMarsPeople.make_marspeople(level)
             run_animation = {
                 layers = {
                     {
-                        filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
+                        filename = "__erm_marspeople__/graphics/entity/units/marspeople/marspeople-run.png",
                         width = 96,
                         height = 96,
                         frame_count = 16,
@@ -160,7 +160,7 @@ function ErmMarsPeople.make_marspeople(level)
                         animation_speed = 0.4,
                     },
                     {
-                        filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
+                        filename = "__erm_marspeople__/graphics/entity/units/marspeople/marspeople-run.png",
                         width = 96,
                         height = 96,
                         frame_count = 16,
@@ -193,7 +193,7 @@ function ErmMarsPeople.make_marspeople(level)
             final_render_layer = "corpse",
             animation = {
                 {
-                    filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-death.png",
+                    filename = "__erm_marspeople__/graphics/entity/units/marspeople/marspeople-death.png",
                     width = 96,
                     height = 96,
                     frame_count = 34,
