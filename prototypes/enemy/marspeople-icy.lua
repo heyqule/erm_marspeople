@@ -98,6 +98,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                 range = attack_range,
                 min_attack_distance = attack_range - 3,
                 turn_range = 0.5,
+                use_shooter_direction = true,
                 projectile_center = util.by_pixel(16, 24),
                 cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
                 cooldown_deviation = 0.1,
@@ -185,7 +186,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
             flags = { "placeable-off-grid", "building-direction-8-way", "not-on-map" },
             selection_box = selection_box,
             selectable_in_game = false,
-            dying_speed = 0.025,
+            dying_speed = 0.015,
             time_before_removed = defines.time.minute * settings.startup["enemyracemanager-enemy-corpse-time"].value,
             subgroup = "corpses",
             order = "x" .. name .. level,
@@ -198,8 +199,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                     frame_count = 34,
                     direction_count = 2,
                     axially_symmetrical = false,
-                    scale = unit_scale,
-                    animation_speed = 0.2,
+                    scale = unit_scale
                 }
             }
         }

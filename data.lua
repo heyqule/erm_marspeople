@@ -24,6 +24,9 @@ data:extend(
 require "prototypes.projectiles"
 require "prototypes.building.lab"
 require "prototypes.enemy.miniufo"
+require "prototypes.enemy.ufo"
+require "prototypes.enemy.eye-ufo-a"
+require "prototypes.enemy.eye-ufo-b"
 require "prototypes.enemy.marspeople"
 require "prototypes.enemy.marspeople-fire"
 require "prototypes.enemy.marspeople-icy"
@@ -33,6 +36,9 @@ local level = ErmConfig.MAX_LEVELS
 for i = 1, level do
     --Units
     ErmMarsPeople.make_miniufo(i)
+    ErmMarsPeople.make_ufo(i)
+    ErmMarsPeople.make_eye_ufo_a(i)
+    ErmMarsPeople.make_eye_ufo_b(i)
     ErmMarsPeople.make_marspeople(i)
     ErmMarsPeople.make_marspeople_fire(i)
     ErmMarsPeople.make_marspeople_icy(i)

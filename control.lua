@@ -34,9 +34,9 @@ local createRace = function()
 end
 
 local addRaceSettings = function()
-    if remote.call('enemy_race_manager', 'get_race', MOD_NAME) then
-        return
-    end
+    --if remote.call('enemy_race_manager', 'get_race', MOD_NAME) then
+    --    return
+    --end
     local race_settings = {
         race = MOD_NAME,
         version = MOD_VERSION,
@@ -47,9 +47,9 @@ local addRaceSettings = function()
         attack_meter = 0, -- Build by killing their force (Spawner = 50, turrets = 10, unit = 1)
         next_attack_threshold = 0, -- Used by system to calculate next move
         units = {
-            { 'marspeople' },
-            { 'marspeople-icy' },
-            { 'miniufo','marspeople-fire' },
+            { 'marspeople', 'miniufo' },
+            { 'eye-ufo-a', 'marspeople-icy' },
+            { 'eye-ufo-b','ufo', 'marspeople-fire' },
         },
         current_units_tier = {},
         turrets = {
@@ -96,7 +96,10 @@ end)
 
 Event.on_configuration_changed(function(event)
     createRace()
-
+    addRaceSettings()
+    remote.call('enemy_race_manager_debug', 'level_up', 20)
+    remote.call('enemy_race_manager_debug', 'set_evolution_factor', 0.85)
+    remote.call('enemy_race_manager_debug', 'set_tier', 3)
     -- Mod Compatibility Upgrade for race settings
     Event.dispatch({
         name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })

@@ -102,6 +102,7 @@ function ErmMarsPeople.make_miniufo(level)
                 cooldown_deviation = 0.1,
                 damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
                 warmup = 12,
+                use_shooter_direction = true,
                 projectile_center = util.by_pixel(0, 64),
                 ammo_type = {
                     category = "marspeople-damage",
