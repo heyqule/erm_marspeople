@@ -147,6 +147,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                             shift = util.by_pixel(-1, 90),
                             line_length = 12,
                             lines_per_file = 2,
+                            draw_as_glow = true,
                         },
                         {
                             filename = "__erm_marspeople__/graphics/entity/units/daimanji/daimanji-thunderbolt-run.png",
@@ -177,7 +178,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                     }
                 }
             },
-            render_layer = "air-object",
+            render_layer = "wires-above",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {
@@ -201,8 +202,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                         direction_count = 1,
                         scale = unit_scale,
                         animation_speed = 0.5,
-                        shift= util.by_pixel(-1, 90),
-                        draw_as_glow = true
+                        shift= util.by_pixel(-1, 90)
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/daimanji/daimanji-thunderbolt-run.png",

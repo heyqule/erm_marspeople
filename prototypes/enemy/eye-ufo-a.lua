@@ -156,7 +156,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                     }
                 }
             },
-            render_layer = "air-object",
+            render_layer = "wires-above",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {

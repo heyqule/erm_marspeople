@@ -157,7 +157,7 @@ function ErmMarsPeople.make_miniufo(level)
                     }
                 }
             },
-            render_layer = "air-object",
+            render_layer = "wires-above",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {
