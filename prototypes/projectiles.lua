@@ -65,7 +65,7 @@ data:extend({
         type = "projectile",
         name = "mini-ufo-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -86,13 +86,14 @@ data:extend({
             height = 32,
             priority = "high",
             animation_speed = 0.4,
+            draw_as_glow = true,
         }
     },
     {
         type = "projectile",
         name = "ufo-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -113,13 +114,14 @@ data:extend({
             height = 35,
             priority = "high",
             animation_speed = 1,
+            draw_as_glow = true,
         }
     },
     {
         type = "projectile",
         name = "eye-ufo-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -140,13 +142,46 @@ data:extend({
             height = 32,
             priority = "high",
             animation_speed = 0.5,
+            draw_as_glow = true,
+        }
+    },
+    {
+        type = "projectile",
+        name = "daimanji-purple-projectile",
+        flags = { "not-on-map" },
+        acceleration = 0.01,
+        action = {
+            type = "direct",
+            action_delivery = {
+                type = "instant",
+                target_effects = {
+                    {
+                        type = "damage",
+                        damage = { amount = 30, type = "electric" },
+                        apply_damage_to_trees = true
+                    },
+                    {
+                        type = "create-entity",
+                        entity_name = "marspeople-purple-explosion"
+                    }
+                }
+            }
+        },
+        animation = {
+            filename = "__erm_marspeople__/graphics/entity/projectiles/daimanji-purple-ball.png",
+            frame_count = 12,
+            width = 48,
+            height = 64,
+            priority = "high",
+            animation_speed = 0.5,
+            draw_as_glow = true,
         }
     },
     {
         type = "projectile",
         name = "marspeople-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -183,7 +218,7 @@ data:extend({
         type = "projectile",
         name = "marspeople-fire-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -221,7 +256,7 @@ data:extend({
         type = "projectile",
         name = "marspeople-icy-projectile",
         flags = { "not-on-map" },
-        acceleration = 0.005,
+        acceleration = 0.01,
         action = {
             type = "direct",
             action_delivery = {
@@ -247,6 +282,39 @@ data:extend({
             priority = "high",
             animation_speed = 0.4,
             run_mode = "forward-then-backward",
+        }
+    },
+    {
+        type = "projectile",
+        name = "daimanji-thunderbolt",
+        flags = { "not-on-map" },
+        acceleration = 0.05,
+        action = {
+            type = "direct",
+            action_delivery = {
+                type = "instant",
+                target_effects = {
+                    {
+                        type = "create-entity",
+                        entity_name = "marspeople-thunderbolt-explosion"
+                    },
+                    {
+                        type = "damage",
+                        damage = { amount = 15, type = "cold" },
+                        apply_damage_to_trees = true
+                    },
+                }
+            }
+        },
+        animation = {
+            filename = "__erm_marspeople__/graphics/entity/projectiles/thunderbolt-effect.png",
+            frame_count = 20,
+            width = 96,
+            height = 192,
+            priority = "high",
+            animation_speed = 0.5,
+            line_length = 10,
+            lines_per_file = 2,
         }
     },
     --- Explosions
@@ -300,6 +368,22 @@ data:extend({
     },
     {
         type = "explosion",
+        name = "marspeople-purple-explosion",
+        flags = { "not-on-map" },
+        animations = {
+            {
+                filename = "__erm_marspeople__/graphics/entity/sfx/purple-explosion.png",
+                width = 96,
+                height = 128,
+                frame_count = 20,
+                animation_speed = 0.3,
+                shift = util.by_pixel(0, 16),
+                draw_as_glow = true,
+            }
+        }
+    },
+    {
+        type = "explosion",
         name = "marspeople-ground-explosion",
         flags = { "not-on-map" },
         animations = {
@@ -308,6 +392,22 @@ data:extend({
                 width = 128,
                 height = 192,
                 frame_count = 24,
+                animation_speed = 0.4,
+                shift = util.by_pixel(0, 16),
+                draw_as_glow = true,
+            }
+        }
+    },
+    {
+        type = "explosion",
+        name = "marspeople-thunderbolt-explosion",
+        flags = { "not-on-map" },
+        animations = {
+            {
+                filename = "__erm_marspeople__/graphics/entity/projectiles/thunderbolt-explosion.png",
+                width = 64,
+                height = 64,
+                frame_count = 4,
                 animation_speed = 0.4,
                 shift = util.by_pixel(0, 16),
                 draw_as_glow = true,

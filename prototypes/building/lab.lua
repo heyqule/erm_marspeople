@@ -61,6 +61,9 @@ local spawn_table = function(level)
 
     res[6] = { MOD_NAME .. '/eye-ufo-a/' .. level,           { { 0.0, 0.2 }, { 0.2, 0.2 }, { 0.4, 0.2 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.2 } } }
     res[7] = { MOD_NAME .. '/eye-ufo-b/' .. level,           { { 0.0, 0.2 }, { 0.2, 0.2 }, { 0.4, 0.2 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.2 } } }
+    res[8] = { MOD_NAME .. '/daimanji-purpleball/' .. level,           { { 0.0, 0.2 }, { 0.2, 0.2 }, { 0.4, 0.2 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.2 } } }
+    res[9] = { MOD_NAME .. '/daimanji-dropship/' .. level,           { { 0.0, 0.2 }, { 0.2, 0.2 }, { 0.4, 0.2 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.2 } } }
+    res[10] = { MOD_NAME .. '/daimanji-thunderbolt/' .. level,           { { 0.0, 0.2 }, { 0.2, 0.2 }, { 0.4, 0.2 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.2 } } }
     return res
 end
 
