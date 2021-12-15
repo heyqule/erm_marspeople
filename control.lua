@@ -48,8 +48,8 @@ local addRaceSettings = function()
         next_attack_threshold = 0, -- Used by system to calculate next move
         units = {
             { 'marspeople', 'miniufo' },
-            { 'eye-ufo-a', 'marspeople-icy' },
-            { 'eye-ufo-b','ufo', 'marspeople-fire', 'daimanji-purpleball' },
+            { 'eye-ufo-a', 'marspeople-icy', 'daimanji-dropship' },
+            { 'eye-ufo-b', 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
         },
         current_units_tier = {},
         turrets = {
@@ -96,6 +96,7 @@ end)
 
 Event.on_configuration_changed(function(event)
     createRace()
+    -- @for debug
     addRaceSettings()
     remote.call('enemy_race_manager_debug', 'level_up', 20)
     remote.call('enemy_race_manager_debug', 'set_evolution_factor', 0.85)

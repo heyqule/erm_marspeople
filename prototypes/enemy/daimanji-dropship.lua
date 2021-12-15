@@ -178,7 +178,7 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                     }
                 }
             },
-            render_layer = "air-object",
+            render_layer = "wires-above",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {
@@ -202,8 +202,7 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                         direction_count = 1,
                         scale = unit_scale,
                         animation_speed = 0.5,
-                        shift= util.by_pixel(-2, 58),
-                        draw_as_glow = true
+                        shift= util.by_pixel(-2, 58)
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/daimanji/daimanji-dropship-run.png",
