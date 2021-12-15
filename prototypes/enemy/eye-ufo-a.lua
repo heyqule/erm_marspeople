@@ -125,37 +125,38 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                                     height = 48,
                                     frame_count = 11,
                                     frame_sequence = { 1,2,3,4,5,6,7,8,9,10,11,11,11,11,11,11 },
-                            direction_count = 1,
-                            scale = unit_scale,
-                            animation_speed = 0.5
-                        },
-                        {
-                            filename = "__erm_marspeople__/graphics/entity/units/miniufo/miniufo-attack.png",
-                            width = 32,
-                            height = 32,
-                            frame_count = 16,
-                            direction_count = 1,
-                            scale = unit_scale,
-                            animation_speed = 0.5,
-                            shift= util.by_pixel(0, 16)
-                        },
-                        {
-                            filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
-                            width = 48,
-                            height = 48,
-                            frame_count = 11,
-                            frame_sequence = { 1,2,3,4,5,6,7,8,9,10,11,11,11,11,11,11 },
-                            direction_count = 1,
-                            scale = unit_scale,
-                            tint = ERM_UnitTint.tint_shadow(),
-                            draw_as_shadow = true,
-                            animation_speed = 0.5,
-                            shift = {4, 0},
-                        }
+                                    direction_count = 1,
+                                    scale = unit_scale,
+                                    animation_speed = 0.5
+                                },
+                                {
+                                    filename = "__erm_marspeople__/graphics/entity/units/miniufo/miniufo-attack.png",
+                                    width = 32,
+                                    height = 32,
+                                    frame_count = 16,
+                                    direction_count = 1,
+                                    scale = unit_scale,
+                                    animation_speed = 0.5,
+                                    shift= util.by_pixel(0, 16),
+                                    draw_as_glow = true,
+                                },
+                                {
+                                    filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
+                                    width = 48,
+                                    height = 48,
+                                    frame_count = 11,
+                                    frame_sequence = { 1,2,3,4,5,6,7,8,9,10,11,11,11,11,11,11 },
+                                    direction_count = 1,
+                                    scale = unit_scale,
+                                    tint = ERM_UnitTint.tint_shadow(),
+                                    draw_as_shadow = true,
+                                    animation_speed = 0.5,
+                                    shift = {4, 0},
+                                }
                     }
                 }
             },
-
+            render_layer = "air-object",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {
@@ -167,7 +168,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                         axially_symmetrical = false,
                         direction_count = 1,
                         scale = unit_scale,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
@@ -179,7 +180,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                         scale = unit_scale,
                         tint = ERM_UnitTint.tint_shadow(),
                         draw_as_shadow = true,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                         shift = {4, 0},
                     }
                 }

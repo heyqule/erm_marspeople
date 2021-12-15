@@ -30,6 +30,9 @@ require "prototypes.enemy.eye-ufo-b"
 require "prototypes.enemy.marspeople"
 require "prototypes.enemy.marspeople-fire"
 require "prototypes.enemy.marspeople-icy"
+require "prototypes.enemy.daimanji-purpleball"
+require "prototypes.enemy.daimanji-dropship"
+require "prototypes.enemy.daimanji-thunderbolt"
 
 local level = ErmConfig.MAX_LEVELS
 
@@ -42,6 +45,9 @@ for i = 1, level do
     ErmMarsPeople.make_marspeople(i)
     ErmMarsPeople.make_marspeople_fire(i)
     ErmMarsPeople.make_marspeople_icy(i)
+    ErmMarsPeople.make_daimanji_purpleball(i)
+    ErmMarsPeople.make_daimanji_dropship(i)
+    ErmMarsPeople.make_daimanji_thunderbolt(i)
 
     --Building
     ErmMarsPeople.make_lab(i)

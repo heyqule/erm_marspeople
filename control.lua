@@ -49,7 +49,7 @@ local addRaceSettings = function()
         units = {
             { 'marspeople', 'miniufo' },
             { 'eye-ufo-a', 'marspeople-icy' },
-            { 'eye-ufo-b','ufo', 'marspeople-fire' },
+            { 'eye-ufo-b','ufo', 'marspeople-fire', 'daimanji-purpleball' },
         },
         current_units_tier = {},
         turrets = {

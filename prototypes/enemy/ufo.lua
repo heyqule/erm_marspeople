@@ -137,7 +137,8 @@ function ErmMarsPeople.make_ufo(level)
                             direction_count = 1,
                             scale = unit_scale,
                             animation_speed = 0.5,
-                            shift= util.by_pixel(0, 16)
+                            shift= util.by_pixel(0, 16),
+                            draw_as_glow = true,
                         },
                         {
                             filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
@@ -155,7 +156,7 @@ function ErmMarsPeople.make_ufo(level)
                     }
                 }
             },
-
+            render_layer = "air-object",
             distance_per_frame = 0.17,
             run_animation = {
                 layers = {
@@ -167,7 +168,7 @@ function ErmMarsPeople.make_ufo(level)
                         axially_symmetrical = false,
                         direction_count = 1,
                         scale = unit_scale,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
@@ -179,7 +180,7 @@ function ErmMarsPeople.make_ufo(level)
                         scale = unit_scale,
                         tint = ERM_UnitTint.tint_shadow(),
                         draw_as_shadow = true,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                         shift = {4, 0},
                     }
                 }

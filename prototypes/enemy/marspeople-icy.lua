@@ -157,7 +157,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                         axially_symmetrical = false,
                         direction_count = 2,
                         scale = unit_scale,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
@@ -169,7 +169,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                         scale = unit_scale,
                         tint = ERM_UnitTint.tint_shadow(),
                         draw_as_shadow = true,
-                        animation_speed = 0.4,
+                        animation_speed = 0.5,
                         shift = {0.2, 0}
                     }
                 }
