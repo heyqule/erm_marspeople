@@ -4,12 +4,14 @@ This mod adds Mars People from Metal Slug as enemy.
 They are weak against Acid/Poison (Max 85 resist).
 
 Credit:
-All graphics and sounds are properties of SNK.
+Code files license under GNU LGPLv3
+
+All graphics and sounds in this mod are properties of SNK, metal slug series. They are used for experimental purposes.
 
 Discord:  [https://discord.gg/BwWXygyEyQ](https://discord.gg/BwWXygyEyQ)
 
 ### Requirement
-* Enemy Race Manager >= 1.9
+* Enemy Race Manager >= 1.11
 * Factorio Standard Library >= 1.4.6
 * Factorio Base >= 1.1
 
