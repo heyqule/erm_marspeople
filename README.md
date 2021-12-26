@@ -1,12 +1,12 @@
 # ERM Mars People (Beta release)
-This mod adds Mars People from Metal Slug as enemy.
+This mod adds Mars People from Metal Slug as enemy.  This mod is to test 2 ways animations. 
 
 They are weak against Acid/Poison (Max 85 resist).
 
 Credit:
 Code files license under GNU LGPLv3
 
-All graphics and sounds in this mod are properties of SNK, metal slug series. They are used for experimental purposes.
+All graphics and sounds in this mod are properties of SNK Corporation, Metal Slug series. They are used for experimental purposes. Graphic assets are converted from the sprites in https://retrogamezone.co.uk/metalslug/creatureenemies.htm
 
 Discord:  [https://discord.gg/BwWXygyEyQ](https://discord.gg/BwWXygyEyQ)
 
