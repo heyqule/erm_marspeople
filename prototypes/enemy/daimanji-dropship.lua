@@ -16,8 +16,8 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-dropship'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 120
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
+local hitpoint = 200
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -46,15 +46,15 @@ local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipl
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = ERM_Config.get_max_attack_range()
+local attack_range = 3
 
 local movement_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
-local pollution_to_join_attack = 50
+local vision_distance = 35
+local pollution_to_join_attack = 200
 local distraction_cooldown = 20
 
 -- Animation Settings
@@ -103,7 +103,7 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                 type = "projectile",
                 ammo_category = 'marspeople-damage',
                 range = attack_range,
-                min_attack_distance = attack_range - 4,
+                min_attack_distance = attack_range,
                 cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
                 cooldown_deviation = 0.1,
                 damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
@@ -116,9 +116,13 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                     action = {
                         type = "direct",
                         action_delivery = {
-                            type = "projectile",
-                            projectile = 'daimanji-purple-projectile',
-                            starting_speed = 0.2,
+                            type = 'instant',
+                            source_effects = {
+                                {
+                                    type = "script",
+                                    effect_id = MARSPEOPLE_DROPSHIP_ATTACK,
+                                }
+                            }
                         }
                     }
                 },
@@ -232,7 +236,7 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                     },
                 }
             },
-            dying_explosion = "marspeople-explosion",
+            dying_explosion = "marspeople-ground-large-explosion",
             dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.8),
             corpse = name .. '-corpse'
         },

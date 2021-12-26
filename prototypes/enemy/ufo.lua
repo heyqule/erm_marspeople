@@ -6,12 +6,15 @@ local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
+
 local name = 'ufo'
 
+
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 120
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
+local hitpoint = 200
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -33,21 +36,21 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_laser_damage = 1
-local incremental_laser_damage = 7
+local incremental_laser_damage = 5
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = 9
+local attack_range = 6
 
 local movement_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
+local vision_distance = 35
 local pollution_to_join_attack = 50
 local distraction_cooldown = 20
 
@@ -106,20 +109,20 @@ function ErmMarsPeople.make_ufo(level)
                 projectile_center = util.by_pixel(0, 64),
                 ammo_type = {
                     category = "marspeople-damage",
-                    target_type = "direction",
                     action = {
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
                             projectile = 'ufo-projectile',
-                            starting_speed = 0.25,
+                            starting_speed = 0.3,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
-                            }
-                        },
-                        sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
-                        animation = {
-                            layers = {
-                                {
+                    }
+                },
+                sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
+                animation = {
+                    layers = {
+                        {
                                     filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
                                     width = 64,
                                     height = 64,

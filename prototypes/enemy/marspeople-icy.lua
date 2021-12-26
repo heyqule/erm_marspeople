@@ -32,15 +32,15 @@ local incremental_cold_resistance = 80
 
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_laser_damage = 1
-local incremental_laser_damage = 9
+local base_cold_damage = 1
+local incremental_cold_damage = 9
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = 9
+local attack_range = 12
 
 local movement_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_movement_speed = 0.1
@@ -102,7 +102,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                 projectile_center = util.by_pixel(16, 24),
                 cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
                 cooldown_deviation = 0.1,
-                damage_modifier = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
+                damage_modifier = ERM_UnitHelper.get_damage(base_cold_damage, incremental_cold_damage, damage_multiplier, level),
                 warmup = 12,
                 ammo_type = {
                     category = "marspeople-damage",
@@ -127,7 +127,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                             axially_symmetrical = false,
                             direction_count = 2,
                             scale = unit_scale,
-                            animation_speed = 0.6
+                            animation_speed = 0.5
                         },
                         {
                             filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-attack.png",
@@ -139,7 +139,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                             scale = unit_scale,
                             tint = ERM_UnitTint.tint_shadow(),
                             draw_as_shadow = true,
-                            animation_speed = 0.6,
+                            animation_speed = 0.5,
                             shift = {0.2, 0}
                         }
                     }

@@ -22,7 +22,13 @@ data:extend(
         })
 
 require "prototypes.projectiles"
-require "prototypes.building.lab"
+require "prototypes.building.tencore"
+require "prototypes.building.entrance_jp"
+require "prototypes.building.entrance_en"
+require "prototypes.building.exit_jp"
+require "prototypes.building.exit_en"
+require "prototypes.building.laser-turret"
+require "prototypes.building.thunderbolt-turret"
 require "prototypes.enemy.miniufo"
 require "prototypes.enemy.ufo"
 require "prototypes.enemy.eye-ufo-a"
@@ -30,6 +36,7 @@ require "prototypes.enemy.eye-ufo-b"
 require "prototypes.enemy.marspeople"
 require "prototypes.enemy.marspeople-fire"
 require "prototypes.enemy.marspeople-icy"
+require "prototypes.enemy.marspeople-builder"
 require "prototypes.enemy.daimanji-purpleball"
 require "prototypes.enemy.daimanji-dropship"
 require "prototypes.enemy.daimanji-thunderbolt"
@@ -45,11 +52,18 @@ for i = 1, level do
     ErmMarsPeople.make_marspeople(i)
     ErmMarsPeople.make_marspeople_fire(i)
     ErmMarsPeople.make_marspeople_icy(i)
+    ErmMarsPeople.make_marspeople_builder(i)
     ErmMarsPeople.make_daimanji_purpleball(i)
     ErmMarsPeople.make_daimanji_dropship(i)
     ErmMarsPeople.make_daimanji_thunderbolt(i)
 
     --Building
-    ErmMarsPeople.make_lab(i)
+    ErmMarsPeople.make_tencore(i)
+    ErmMarsPeople.make_entrance_jp(i)
+    ErmMarsPeople.make_entrance_en(i)
+    ErmMarsPeople.make_exit_jp(i)
+    ErmMarsPeople.make_exit_en(i)
+    ErmMarsPeople.make_laser_turret(i)
+    ErmMarsPeople.make_thunderbolt_turret(i)
 end
 

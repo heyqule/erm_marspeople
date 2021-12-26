@@ -11,7 +11,7 @@ local Game = require('__stdlib__/stdlib/game')
 local ErmConfig = require('__enemyracemanager__/lib/global_config')
 local ErmForceHelper = require('__enemyracemanager__/lib/helper/force_helper')
 local ErmRaceSettingsHelper = require('__enemyracemanager__/lib/helper/race_settings_helper')
---local CustomAttacks = require('__erm_marspeople__/prototypes/custom_attacks')
+local CustomAttacks = require('__erm_marspeople__/prototypes/custom_attacks')
 
 local Event = require('__stdlib__/stdlib/event/event')
 local String = require('__stdlib__/stdlib/utils/string')
@@ -48,34 +48,34 @@ local addRaceSettings = function()
         next_attack_threshold = 0, -- Used by system to calculate next move
         units = {
             { 'marspeople', 'miniufo' },
-            { 'eye-ufo-a', 'marspeople-icy', 'daimanji-dropship' },
-            { 'eye-ufo-b', 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
+            { 'eye-ufo-a', 'eye-ufo-b', 'marspeople-icy', 'daimanji-dropship', 'marspeople-builder'},
+            { 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
         },
         current_units_tier = {},
         turrets = {
-            {'lab'},
+            {'tencore'},
             {},
             {},
         },
         current_turrets_tier = {},
         command_centers = {
-            {'lab'},
+            {'tencore'},
             {},
             {}
         },
         current_command_centers_tier = {},
         support_structures = {
-            {'lab'},
+            {'tencore'},
             {},
             {},
         },
         current_support_structures_tier = {},
-        --flying_units = {
-        --    {}, -- Fast unit that uses in rapid target attack group
-        --    {},
-        --    {}
-        --},
-        --dropship = ''
+        flying_units = {
+            {'miniufo'},
+            {'eye-ufo-a','eye-ufo-b'},
+            {'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt'}
+        },
+        dropship = 'daimanji-dropship'
     }
 
     race_settings.current_units_tier = race_settings.units[1]
@@ -107,13 +107,13 @@ Event.on_configuration_changed(function(event)
 end)
 
 Event.register(defines.events.on_script_trigger_effect, function(event)
-    --if CustomAttacks.valid(event, MOD_NAME) then
-    --    if event.effect_id == DROPSHIP_ATTACK then
-    --        CustomAttacks.process_dropship(event)
-    --    elseif event.effect_id == ENGINEER_ATTACK then
-    --        CustomAttacks.process_engineer(event)
-    --    end
-    --end
+    if CustomAttacks.valid(event, MOD_NAME) then
+        if event.effect_id == MARSPEOPLE_DROPSHIP_ATTACK then
+            CustomAttacks.process_dropship(event)
+        elseif event.effect_id == MARSPEOPLE_BUILDER_ATTACK then
+            CustomAttacks.process_builder(event)
+        end
+    end
 end)
 
 ---

@@ -10,8 +10,8 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople-fire'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 80
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
+local hitpoint = 200
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.25
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -40,7 +40,7 @@ local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipl
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = 9
+local attack_range = 6
 
 local movement_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_movement_speed = 0.1
@@ -96,7 +96,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                 type = "projectile",
                 ammo_category = 'marspeople-damage',
                 range = attack_range,
-                min_attack_distance = attack_range - 3,
+                min_attack_distance = attack_range - 2,
                 turn_range = 0.5,
                 use_shooter_direction = true,
                 projectile_center = util.by_pixel(16, 24),
@@ -127,7 +127,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                             axially_symmetrical = false,
                             direction_count = 2,
                             scale = unit_scale,
-                            animation_speed = 0.6
+                            animation_speed = 0.5
                         },
                         {
                             filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-attack.png",
@@ -139,7 +139,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                             scale = unit_scale,
                             tint = ERM_UnitTint.tint_shadow(),
                             draw_as_shadow = true,
-                            animation_speed = 0.6,
+                            animation_speed = 0.5,
                             shift = {0.2, 0}
                         }
                     }

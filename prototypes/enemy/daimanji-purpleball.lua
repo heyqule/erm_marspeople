@@ -16,8 +16,8 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-purpleball'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 120
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
+local hitpoint = 175
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -39,7 +39,7 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_laser_damage = 1
-local incremental_laser_damage = 7
+local incremental_laser_damage = 2.5
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -53,7 +53,7 @@ local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
+local vision_distance = 35
 local pollution_to_join_attack = 50
 local distraction_cooldown = 20
 
@@ -112,13 +112,13 @@ function ErmMarsPeople.make_daimanji_dropship(level)
                 projectile_center = util.by_pixel(0, 100),
                 ammo_type = {
                     category = "marspeople-damage",
-                    target_type = "direction",
                     action = {
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
                             projectile = 'daimanji-purple-projectile',
                             starting_speed = 0.2,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },
@@ -228,8 +228,8 @@ function ErmMarsPeople.make_daimanji_dropship(level)
                     }
                 }
             },
-            dying_explosion = "marspeople-explosion",
-            dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.8),
+            dying_explosion = "marspeople-ground-large-explosion",
+            dying_sound = ErmMarsPeople_Sound.laser_attack(0.8),
             corpse = name .. '-corpse'
         },
         {
