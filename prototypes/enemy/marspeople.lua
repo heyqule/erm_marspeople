@@ -11,7 +11,7 @@ local name = 'marspeople'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local hitpoint = 80
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -127,7 +127,7 @@ function ErmMarsPeople.make_marspeople(level)
                             axially_symmetrical = false,
                             direction_count = 2,
                             scale = unit_scale,
-                            animation_speed = 0.6
+                            animation_speed = 0.5
                         },
                         {
                             filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-attack.png",
@@ -139,7 +139,7 @@ function ErmMarsPeople.make_marspeople(level)
                             scale = unit_scale,
                             tint = ERM_UnitTint.tint_shadow(),
                             draw_as_shadow = true,
-                            animation_speed = 0.6,
+                            animation_speed = 0.5,
                             shift = {0.2, 0}
                         }
                     }

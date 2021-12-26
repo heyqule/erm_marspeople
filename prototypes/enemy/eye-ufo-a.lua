@@ -5,12 +5,13 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'eye-ufo-a'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 120
+local hitpoint = 140
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -33,7 +34,7 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_laser_damage = 1
-local incremental_laser_damage = 7
+local incremental_laser_damage = 4
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -47,7 +48,7 @@ local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
+local vision_distance = 35
 local pollution_to_join_attack = 50
 local distraction_cooldown = 20
 
@@ -94,65 +95,52 @@ function ErmMarsPeople.make_eye_ufo_a(level)
             distraction_cooldown = distraction_cooldown,
             ai_settings = biter_ai_settings,
             attack_parameters = {
-                type = "projectile",
+                type = "beam",
                 ammo_category = 'marspeople-damage',
                 range = attack_range,
                 min_attack_distance = attack_range - 3,
-                cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
-                cooldown_deviation = 0.1,
+                cooldown = 0,
+                --cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level),
+                --cooldown_deviation = 0.1,
                 damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, damage_multiplier, level),
-                warmup = 12,
-                use_shooter_direction = true,
-                projectile_center = util.by_pixel(0, 64),
                 ammo_type = {
                     category = "marspeople-damage",
-                    target_type = "direction",
-                    action = {
+                    action =
+                    {
                         type = "direct",
-                        action_delivery = {
-                            type = "projectile",
-                            projectile = 'ufo-projectile',
-                            starting_speed = 0.25,
+                        action_delivery =
+                        {
+                            type = "beam",
+                            beam = "marspeople-laser-beam",
+                            max_length = ERM_Config.get_max_projectile_range(),
+                            duration = 20
                         }
-                            }
+                    }
+                },
+                sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
+                animation = {
+                    layers = {
+                        {
+                            filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
+                            width = 48,
+                            height = 48,
+                            frame_count = 11,
+                            direction_count = 1,
+                            scale = unit_scale,
+                            animation_speed = 0.5
                         },
-                        sound = ErmMarsPeople_Sound.mars_people_attack(0.75),
-                        animation = {
-                            layers = {
-                                {
-                                    filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
-                                    width = 48,
-                                    height = 48,
-                                    frame_count = 11,
-                                    frame_sequence = { 1,2,3,4,5,6,7,8,9,10,11,11,11,11,11,11 },
-                                    direction_count = 1,
-                                    scale = unit_scale,
-                                    animation_speed = 0.5
-                                },
-                                {
-                                    filename = "__erm_marspeople__/graphics/entity/units/miniufo/miniufo-attack.png",
-                                    width = 32,
-                                    height = 32,
-                                    frame_count = 16,
-                                    direction_count = 1,
-                                    scale = unit_scale,
-                                    animation_speed = 0.5,
-                                    shift= util.by_pixel(0, 16),
-                                    draw_as_glow = true,
-                                },
-                                {
-                                    filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
-                                    width = 48,
-                                    height = 48,
-                                    frame_count = 11,
-                                    frame_sequence = { 1,2,3,4,5,6,7,8,9,10,11,11,11,11,11,11 },
-                                    direction_count = 1,
-                                    scale = unit_scale,
-                                    tint = ERM_UnitTint.tint_shadow(),
-                                    draw_as_shadow = true,
-                                    animation_speed = 0.5,
-                                    shift = {4, 0},
-                                }
+                        {
+                            filename = "__erm_marspeople__/graphics/entity/units/" .. name .. "/" .. name .. "-run.png",
+                            width = 48,
+                            height = 48,
+                            frame_count = 11,
+                            direction_count = 1,
+                            scale = unit_scale,
+                            tint = ERM_UnitTint.tint_shadow(),
+                            draw_as_shadow = true,
+                            animation_speed = 0.5,
+                            shift = {4, 0},
+                        }
                     }
                 }
             },

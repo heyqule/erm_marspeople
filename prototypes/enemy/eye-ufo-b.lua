@@ -5,6 +5,7 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'eye-ufo-b'
@@ -33,21 +34,21 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_laser_damage = 1
-local incremental_laser_damage = 7
+local incremental_laser_damage = 5
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = 9
+local attack_range = 6
 
 local movement_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
+local vision_distance = 35
 local pollution_to_join_attack = 50
 local distraction_cooldown = 20
 
@@ -106,13 +107,13 @@ function ErmMarsPeople.make_eye_ufo_b(level)
                 projectile_center = util.by_pixel(0, 0),
                 ammo_type = {
                     category = "marspeople-damage",
-                    target_type = "direction",
                     action = {
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
                             projectile = 'eye-ufo-projectile',
-                            starting_speed = 0.25,
+                            starting_speed = 0.3,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },
@@ -137,7 +138,6 @@ function ErmMarsPeople.make_eye_ufo_b(level)
                             direction_count = 1,
                             scale = unit_scale,
                             animation_speed = 0.5,
-                            shift= util.by_pixel(0, 16),
                             draw_as_glow = true,
                         },
                         {

@@ -4,18 +4,38 @@
 --- DateTime: 11/6/2021 2:07 PM
 ---
 
+require ("util")
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local fireutil = require('__base__/prototypes/fire-util')
+local sounds = require('__base__/prototypes/entity/sounds')
 local math3d = require "math3d"
+
+local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
+
+local marspeople_beams = util.table.deepcopy(data.raw['beam']['laser-beam'])
+marspeople_beams.name = 'marspeople-laser-beam'
+marspeople_beams.head.tint = ERM_UnitTint.tint_green()
+marspeople_beams.tail.tint = ERM_UnitTint.tint_green()
+marspeople_beams.body[1].tint = ERM_UnitTint.tint_green()
+marspeople_beams.light_animations.head.tint = ERM_UnitTint.tint_green()
+marspeople_beams.light_animations.tail.tint = ERM_UnitTint.tint_green()
+marspeople_beams.light_animations.body[1].tint = ERM_UnitTint.tint_green()
+marspeople_beams.ground_light_animations.head.tint = ERM_UnitTint.tint_green()
+marspeople_beams.ground_light_animations.tail.tint = ERM_UnitTint.tint_green()
+marspeople_beams.ground_light_animations.body.tint = ERM_UnitTint.tint_green()
+
+
 data:extend({
+    ------- Laser Beam -----
+    marspeople_beams,
     ------- Fire -------
     fireutil.add_basic_fire_graphics_and_effects_definitions(
     {
         type = "fire",
         name = "marspeople-fire-flame",
         flags = {"placeable-off-grid", "not-on-map"},
-        damage_per_tick = {amount = 3 / defines.time.second, type = "fire"},
-        maximum_damage_multiplier = 1,
+        damage_per_tick = {amount = 4 / defines.time.second, type = "fire"},
+        maximum_damage_multiplier = 3,
         damage_multiplier_increase_per_added_fuel = 1,
         damage_multiplier_decrease_per_tick = 0.005,
 
@@ -100,9 +120,30 @@ data:extend({
                 type = "instant",
                 target_effects = {
                     {
+                        type = "create-entity",
+                        entity_name = "marspeople-explosion"
+                    },
+                    {
                         type = "damage",
-                        damage = { amount = 30, type = "laser" },
+                        damage = { amount = 15, type = "laser" },
                         apply_damage_to_trees = true
+                    },
+                    {
+                        type = "nested-result",
+                        action = {
+                            type = "area",
+                            force = 'not-same',
+                            radius = 2,
+                            ignore_collision_condition = true,
+                            action_delivery = {
+                                type = "instant",
+                                target_effects = {
+                                    type = "damage",
+                                    damage = { amount = 10, type = "explosion" }
+                                },
+                                apply_damage_to_trees = true
+                            }
+                        }
                     },
                 }
             }
@@ -128,9 +169,30 @@ data:extend({
                 type = "instant",
                 target_effects = {
                     {
+                        type = "create-entity",
+                        entity_name = "marspeople-explosion"
+                    },
+                    {
                         type = "damage",
-                        damage = { amount = 20, type = "electric" },
+                        damage = { amount = 10, type = "electric" },
                         apply_damage_to_trees = true
+                    },
+                    {
+                        type = "nested-result",
+                        action = {
+                            type = "area",
+                            force = 'not-same',
+                            radius = 1,
+                            ignore_collision_condition = true,
+                            action_delivery = {
+                                type = "instant",
+                                target_effects = {
+                                    type = "damage",
+                                    damage = { amount = 5, type = "electric" }
+                                },
+                                apply_damage_to_trees = true
+                            }
+                        }
                     },
                 }
             }
@@ -156,14 +218,31 @@ data:extend({
                 type = "instant",
                 target_effects = {
                     {
+                        type = "create-entity",
+                        entity_name = "marspeople-purple-explosion"
+                    },
+                    {
                         type = "damage",
-                        damage = { amount = 30, type = "electric" },
+                        damage = { amount = 20, type = "laser" },
                         apply_damage_to_trees = true
                     },
                     {
-                        type = "create-entity",
-                        entity_name = "marspeople-purple-explosion"
-                    }
+                        type = "nested-result",
+                        action = {
+                            type = "area",
+                            force = 'not-same',
+                            radius = 2,
+                            ignore_collision_condition = true,
+                            action_delivery = {
+                                type = "instant",
+                                target_effects = {
+                                    type = "damage",
+                                    damage = { amount = 10, type = "electric" }
+                                },
+                                apply_damage_to_trees = true
+                            }
+                        }
+                    },
                 }
             }
         },
@@ -174,6 +253,62 @@ data:extend({
             height = 64,
             priority = "high",
             animation_speed = 0.5,
+            draw_as_glow = true,
+        }
+    },
+    {
+        type = "projectile",
+        name = "daimanji-thunderbolt",
+        flags = { "not-on-map" },
+        acceleration = 0.05,
+        action = {
+            type = "direct",
+            action_delivery = {
+                type = "instant",
+                target_effects = {
+                    {
+                        type = "create-entity",
+                        entity_name = "marspeople-thunderbolt-explosion"
+                    },
+                    {
+                        type = "damage",
+                        damage = { amount = 30, type = "electric" },
+                        apply_damage_to_trees = true
+                    },
+                    {
+                        type = "nested-result",
+                        action = {
+                            type = "area",
+                            force = 'not-same',
+                            radius = 3,
+                            ignore_collision_condition = true,
+                            action_delivery = {
+                                type = "instant",
+                                target_effects = {
+                                    type = "damage",
+                                    damage = { amount = 20, type = "electric" }
+                                },
+                                apply_damage_to_trees = true
+                            }
+                        }
+                    },
+                    {
+                        type = "create-sticker",
+                        sticker = "5-075-slowdown-sticker",
+                        show_in_tooltip = true,
+                    }
+                }
+            }
+        },
+        animation = {
+            filename = "__erm_marspeople__/graphics/entity/projectiles/thunderbolt-effect.png",
+            frame_count = 20,
+            width = 96,
+            height = 192,
+            priority = "high",
+            animation_speed = 0.5,
+            line_length = 10,
+            lines_per_file = 2,
             draw_as_glow = true,
         }
     },
@@ -268,9 +403,14 @@ data:extend({
                     },
                     {
                         type = "damage",
-                        damage = { amount = 15, type = "cold" },
+                        damage = { amount = 12, type = "cold" },
                         apply_damage_to_trees = true
                     },
+                    {
+                        type = "create-sticker",
+                        sticker = "5-050-slowdown-sticker",
+                        show_in_tooltip = true,
+                    }
                 }
             }
         },
@@ -282,39 +422,6 @@ data:extend({
             priority = "high",
             animation_speed = 0.4,
             run_mode = "forward-then-backward",
-        }
-    },
-    {
-        type = "projectile",
-        name = "daimanji-thunderbolt",
-        flags = { "not-on-map" },
-        acceleration = 0.05,
-        action = {
-            type = "direct",
-            action_delivery = {
-                type = "instant",
-                target_effects = {
-                    {
-                        type = "create-entity",
-                        entity_name = "marspeople-thunderbolt-explosion"
-                    },
-                    {
-                        type = "damage",
-                        damage = { amount = 15, type = "cold" },
-                        apply_damage_to_trees = true
-                    },
-                }
-            }
-        },
-        animation = {
-            filename = "__erm_marspeople__/graphics/entity/projectiles/thunderbolt-effect.png",
-            frame_count = 20,
-            width = 96,
-            height = 192,
-            priority = "high",
-            animation_speed = 0.5,
-            line_length = 10,
-            lines_per_file = 2,
         }
     },
     --- Explosions
@@ -353,6 +460,7 @@ data:extend({
     {
         type = "explosion",
         name = "marspeople-explosion",
+        sound = sounds.medium_explosion(0.8),
         flags = { "not-on-map" },
         animations = {
             {
@@ -360,7 +468,7 @@ data:extend({
                 width = 96,
                 height = 128,
                 frame_count = 20,
-                animation_speed = 0.3,
+                animation_speed = 0.35,
                 shift = util.by_pixel(0, 16),
                 draw_as_glow = true,
             }
@@ -370,13 +478,14 @@ data:extend({
         type = "explosion",
         name = "marspeople-purple-explosion",
         flags = { "not-on-map" },
+        sound = sounds.medium_explosion(0.8),
         animations = {
             {
                 filename = "__erm_marspeople__/graphics/entity/sfx/purple-explosion.png",
                 width = 96,
                 height = 128,
                 frame_count = 20,
-                animation_speed = 0.3,
+                animation_speed = 0.35,
                 shift = util.by_pixel(0, 16),
                 draw_as_glow = true,
             }
@@ -385,6 +494,7 @@ data:extend({
     {
         type = "explosion",
         name = "marspeople-ground-explosion",
+        sound = sounds.large_explosion(1.0),
         flags = { "not-on-map" },
         animations = {
             {
@@ -392,9 +502,27 @@ data:extend({
                 width = 128,
                 height = 192,
                 frame_count = 24,
-                animation_speed = 0.4,
+                animation_speed = 0.35,
+                shift = util.by_pixel(0, 16),
+                draw_as_glow = true
+            }
+        }
+    },
+    {
+        type = "explosion",
+        name = "marspeople-ground-large-explosion",
+        sound = sounds.large_explosion(1.0),
+        flags = { "not-on-map" },
+        animations = {
+            {
+                filename = "__erm_marspeople__/graphics/entity/sfx/ground_explosion.png",
+                width = 128,
+                height = 192,
+                frame_count = 24,
+                animation_speed = 0.35,
                 shift = util.by_pixel(0, 16),
                 draw_as_glow = true,
+                scale = 1.25
             }
         }
     },
@@ -408,9 +536,10 @@ data:extend({
                 width = 64,
                 height = 64,
                 frame_count = 4,
-                animation_speed = 0.4,
+                animation_speed = 0.35,
                 shift = util.by_pixel(0, 16),
                 draw_as_glow = true,
+                scale = 2
             }
         }
     },

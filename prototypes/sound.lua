@@ -35,4 +35,18 @@ function MarsPeopleSound.mars_people_attack(volume)
     }
 end
 
+function MarsPeopleSound.electric_attack_attack(volume)
+    return  {
+        filename = "__erm_marspeople__/sounds/projectile/electric_attack.ogg",
+        volume = volume
+    }
+end
+
+function MarsPeopleSound.laser_attack(volume)
+    return  {
+        filename = "__erm_marspeople__/sounds/projectile/laser_attack.ogg",
+        volume = volume
+    }
+end
+
 return MarsPeopleSound;

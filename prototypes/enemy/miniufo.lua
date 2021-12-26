@@ -5,12 +5,13 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'miniufo'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 80
+local hitpoint = 100
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -47,8 +48,8 @@ local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = 30
-local pollution_to_join_attack = 50
+local vision_distance = 35
+local pollution_to_join_attack = 20
 local distraction_cooldown = 20
 
 -- Animation Settings
@@ -106,13 +107,13 @@ function ErmMarsPeople.make_miniufo(level)
                 projectile_center = util.by_pixel(0, 64),
                 ammo_type = {
                     category = "marspeople-damage",
-                    target_type = "direction",
                     action = {
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
                             projectile = 'mini-ufo-projectile',
-                            starting_speed = 0.2,
+                            starting_speed = 0.3,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },
