@@ -53,8 +53,8 @@ local addRaceSettings = function()
         },
         current_units_tier = {},
         turrets = {
-            {'tencore'},
-            {},
+            {'laser-turret'},
+            {'thunderbolt-turret'},
             {},
         },
         current_turrets_tier = {},
@@ -65,8 +65,8 @@ local addRaceSettings = function()
         },
         current_command_centers_tier = {},
         support_structures = {
-            {'tencore'},
-            {},
+            {'entrance_en','entrance_jp'},
+            {'exit_en','exit_jp'},
             {},
         },
         current_support_structures_tier = {},
