@@ -96,11 +96,6 @@ end)
 
 Event.on_configuration_changed(function(event)
     createRace()
-    -- @for debug
-    addRaceSettings()
-    remote.call('enemy_race_manager_debug', 'level_up', 20)
-    remote.call('enemy_race_manager_debug', 'set_evolution_factor', 0.85)
-    remote.call('enemy_race_manager_debug', 'set_tier', 3)
     -- Mod Compatibility Upgrade for race settings
     Event.dispatch({
         name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })
