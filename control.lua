@@ -34,9 +34,9 @@ local createRace = function()
 end
 
 local addRaceSettings = function()
-    --if remote.call('enemy_race_manager', 'get_race', MOD_NAME) then
-    --    return
-    --end
+    if remote.call('enemy_race_manager', 'get_race', MOD_NAME) then
+        return
+    end
     local race_settings = {
         race = MOD_NAME,
         version = MOD_VERSION,
