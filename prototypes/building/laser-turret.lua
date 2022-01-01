@@ -20,6 +20,7 @@ local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local enemy_autoplace = require("__enemyracemanager__/lib/enemy-autoplace-utils")
 
 local name = 'laser-turret'
+local shortrange_name = 'shortrange-laser-turret'
 
 -- Hitpoints
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -54,6 +55,7 @@ local base_attack_speed = 120
 local incremental_attack_speed = 60
 
 local attack_range = 30
+local shortrange_attack_range = 14
 
 local collision_box = { { -0.7, -0.7 }, { 0.7, 0.7 } }
 local map_generator_bounding_box = { { -2.5, -2.5 }, { 2.5, 2.5 } }
@@ -120,7 +122,7 @@ function ErmMarsPeople.make_laser_turret(level)
     ERM_UnitTint.mask_tint(marspeople_laser_turret['folded_animation']['layers'][3], ERM_UnitTint.tint_green())
     ERM_UnitTint.mask_tint(marspeople_laser_turret['preparing_animation']['layers'][3], ERM_UnitTint.tint_green())
     ERM_UnitTint.mask_tint(marspeople_laser_turret['prepared_animation']['layers'][3], ERM_UnitTint.tint_green())
-    ERM_UnitTint.mask_tint(marspeople_laser_turret['folding_animation']['layers'][2], ERM_UnitTint.tint_green())
+    ERM_UnitTint.mask_tint(marspeople_laser_turret['folding_animation']['layers'][3], ERM_UnitTint.tint_green())
 
     local marspeople_laser_turret_remants = util.table.deepcopy(data.raw['corpse']['laser-turret-remnants'])
     marspeople_laser_turret_remants.name = 'marspeople-laser-turret-remnants'
@@ -128,10 +130,66 @@ function ErmMarsPeople.make_laser_turret(level)
     ERM_UnitTint.mask_tint(marspeople_laser_turret_remants['animation'][2]['layers'][2], ERM_UnitTint.tint_green())
     ERM_UnitTint.mask_tint(marspeople_laser_turret_remants['animation'][3]['layers'][2], ERM_UnitTint.tint_green())
 
+    local marspeople_shortrange_laser_turret = util.table.deepcopy(data.raw['electric-turret']['laser-turret'])
+    marspeople_shortrange_laser_turret['type'] = 'turret'
+    marspeople_shortrange_laser_turret['subgroup'] = 'enemies'
+    marspeople_shortrange_laser_turret['name'] = MOD_NAME .. '/' .. shortrange_name .. '/' .. level
+    marspeople_shortrange_laser_turret['localised_name'] = { 'entity-name.' .. MOD_NAME .. '/' .. shortrange_name, level }
+    marspeople_shortrange_laser_turret['flag'] = { "placeable-player", "placeable-enemy" }
+    marspeople_shortrange_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level)
+    marspeople_shortrange_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, health_multiplier, level)
+    marspeople_shortrange_laser_turret['order'] = MOD_NAME .. "-" .. shortrange_name
+    marspeople_shortrange_laser_turret['resistance'] = {
+        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
+        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
+        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, resistance_mutiplier, level) },
+        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
+        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
+        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
+        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
+        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
+    }
+    marspeople_shortrange_laser_turret['collision_box'] = collision_box
+    marspeople_shortrange_laser_turret['selection_box'] = selection_box
+    marspeople_shortrange_laser_turret['map_generator_bounding_box'] = map_generator_bounding_box
+    marspeople_shortrange_laser_turret['autoplace'] = enemy_autoplace.enemy_worm_autoplace(0, FORCE_NAME)
+    marspeople_shortrange_laser_turret['call_for_help_radius'] = 50
+    marspeople_shortrange_laser_turret['spawn_decorations_on_expansion'] = false
+    marspeople_shortrange_laser_turret['energy_source'] = nil
+
+    -- Attack Changes
+    marspeople_shortrange_laser_turret['attack_parameters']['ammo_category'] = "marspeople-damage"
+    marspeople_shortrange_laser_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level)
+    marspeople_shortrange_laser_turret['attack_parameters']['cooldown_deviation'] = 0.1
+    marspeople_shortrange_laser_turret['attack_parameters']['range'] = shortrange_attack_range
+    marspeople_shortrange_laser_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage_multiplier, incremental_laser_damage_multiplier, damage_multiplier, level)
+
+    marspeople_shortrange_laser_turret['attack_parameters']['ammo_type'] = {
+        category = "marspeople-damage",
+        action =
+        {
+            type = "direct",
+            action_delivery =
+            {
+                type = "beam",
+                beam = "marspeople-laser-beam",
+                max_length = ERM_Config.get_max_projectile_range(),
+                duration = 20,
+                source_offset = { 0, -1.31439 },
+            }
+        }
+    }
+    marspeople_shortrange_laser_turret['corpse'] = 'marspeople-laser-turret-remnants',
+    -- Animation Changes
+    ERM_UnitTint.mask_tint(marspeople_shortrange_laser_turret['folded_animation']['layers'][3], ERM_UnitTint.tint_green())
+    ERM_UnitTint.mask_tint(marspeople_shortrange_laser_turret['preparing_animation']['layers'][3], ERM_UnitTint.tint_green())
+    ERM_UnitTint.mask_tint(marspeople_shortrange_laser_turret['prepared_animation']['layers'][3], ERM_UnitTint.tint_green())
+    ERM_UnitTint.mask_tint(marspeople_shortrange_laser_turret['folding_animation']['layers'][3], ERM_UnitTint.tint_green())
+
 
     data:extend({
         marspeople_laser_turret_remants,
         marspeople_laser_turret,
-
+        marspeople_shortrange_laser_turret
     })
 end
