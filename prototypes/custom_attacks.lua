@@ -21,9 +21,9 @@ local get_droppable_unit = function()
 end
 
 local probe_building_name = {
-    { 'laser-turret' },
-    { 'laser-turret' },
-    { 'laser-turret', 'exit_en', 'exit_jp' },
+    { 'shortrange-laser-turret' },
+    { 'shortrange-laser-turret' },
+    { 'shortrange-laser-turret', 'exit_en', 'exit_jp' },
 }
 local get_buildable_structures = function()
     return CustomAttackHelper.get_unit(probe_building_name, MOD_NAME)

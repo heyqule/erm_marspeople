@@ -1,13 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 2022-01-01
+
+  Bugfixes:
+    - Added short range turret for mars builder. They shouldn't use regular turret.
+
+  Graphics:
+   - Fix laser turret tint
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.1
-Date: 2012-12-26
+Date: 2021-12-26
 
   Bugfixes:
     - Remove debug code
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.0
-Date: 2012-12-26
+Date: 2021-12-26
 
   Major Features:
     - Add Metal Slug Mars People
