@@ -20,7 +20,7 @@ local name = 'exit_en'
 -- Hitpoints
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local hitpoint = 300
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -43,10 +43,10 @@ local incremental_cold_resistance = 65
 local unit_scale = 2
 
 local pollution_absorption_absolute = 200
-local spawning_cooldown = { 600, 300 }
+local spawning_cooldown = {720, 480}
 local spawning_radius = 10
-local max_count_of_owned_units = 5
-local max_friends_around_to_spawn = 3
+local max_count_of_owned_units = 7
+local max_friends_around_to_spawn = 5
 local spawn_table = function(level)
     local res = {}
     --Tier 1

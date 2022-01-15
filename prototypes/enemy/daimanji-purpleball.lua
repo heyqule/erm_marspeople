@@ -43,8 +43,8 @@ local incremental_laser_damage = 2.5
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_attack_speed = 120
-local incremental_attack_speed = 60
+local base_attack_speed = 180
+local incremental_attack_speed = 90
 
 local attack_range = ERM_Config.get_max_attack_range()
 
