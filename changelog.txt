@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2022-01-15
+
+  Changes:
+    - Balance spawner for Free for all mode
+    - Standardized spawn timers for spawner to 12s - 8s
+    - Standardize max_count_of_owned_units and max_friends_around_to_spawn to 7, 5 respectively
+    - Changed spawn rate and spawn unit for spanwers.
+    - Lower unit HP for ufo units.
+    - Most AOE units now shoot every 1.5s, instead of 1.
+
+  Bugfixes:
+    - Fixed dropship attack cooldown.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.2
 Date: 2022-01-01
 
@@ -6,7 +21,7 @@ Date: 2022-01-01
     - Added short range turret for mars builder. They shouldn't use regular turret.
 
   Graphics:
-   - Fix laser turret tint
+    - Fix laser turret tint
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
