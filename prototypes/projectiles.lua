@@ -17,12 +17,17 @@ marspeople_beams.name = 'marspeople-laser-beam'
 marspeople_beams.head.tint = ERM_UnitTint.tint_green()
 marspeople_beams.tail.tint = ERM_UnitTint.tint_green()
 marspeople_beams.body[1].tint = ERM_UnitTint.tint_green()
-marspeople_beams.light_animations.head.tint = ERM_UnitTint.tint_green()
-marspeople_beams.light_animations.tail.tint = ERM_UnitTint.tint_green()
-marspeople_beams.light_animations.body[1].tint = ERM_UnitTint.tint_green()
-marspeople_beams.ground_light_animations.head.tint = ERM_UnitTint.tint_green()
-marspeople_beams.ground_light_animations.tail.tint = ERM_UnitTint.tint_green()
-marspeople_beams.ground_light_animations.body.tint = ERM_UnitTint.tint_green()
+if marspeople_beams.light_animations then
+    marspeople_beams.light_animations.head.tint = ERM_UnitTint.tint_green()
+    marspeople_beams.light_animations.tail.tint = ERM_UnitTint.tint_green()
+    marspeople_beams.light_animations.body[1].tint = ERM_UnitTint.tint_green()
+end
+
+if marspeople_beams.ground_light_animations then
+    marspeople_beams.ground_light_animations.head.tint = ERM_UnitTint.tint_green()
+    marspeople_beams.ground_light_animations.tail.tint = ERM_UnitTint.tint_green()
+    marspeople_beams.ground_light_animations.body.tint = ERM_UnitTint.tint_green()
+end
 
 
 data:extend({
