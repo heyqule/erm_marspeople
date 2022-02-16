@@ -105,13 +105,20 @@ Event.on_configuration_changed(function(event)
         name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })
 end)
 
+local attack_functions =
+{
+    [MARSPEOPLE_DROPSHIP_ATTACK] = function(args)
+        CustomAttacks.process_dropship(args)
+    end,
+    [MARSPEOPLE_BUILDER_ATTACK] = function(args)
+        CustomAttacks.process_builder(args)
+    end
+}
 Event.register(defines.events.on_script_trigger_effect, function(event)
-    if CustomAttacks.valid(event, MOD_NAME) then
-        if event.effect_id == MARSPEOPLE_DROPSHIP_ATTACK then
-            CustomAttacks.process_dropship(event)
-        elseif event.effect_id == MARSPEOPLE_BUILDER_ATTACK then
-            CustomAttacks.process_builder(event)
-        end
+    if  attack_functions[event.effect_id] and
+            CustomAttacks.valid(event, MOD_NAME)
+    then
+        attack_functions[event.effect_id](event)
     end
 end)
 
