@@ -11,5 +11,5 @@ MOD_VERSION = 100
 
 DEBUG_MODE = false
 
-MARSPEOPLE_DROPSHIP_ATTACK = 'marspeople-dropship-attack'
-MARSPEOPLE_BUILDER_ATTACK = 'marspeople-builder-attack'
+MARSPEOPLE_DROPSHIP_ATTACK = 'emars-drp'
+MARSPEOPLE_BUILDER_ATTACK = 'emars-bld'
