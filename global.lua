@@ -7,7 +7,6 @@
 -- Globals within the mod
 MOD_NAME = 'erm_marspeople'
 FORCE_NAME = 'enemy_erm_marspeople'
-MOD_VERSION = 100
 
 DEBUG_MODE = false
 
