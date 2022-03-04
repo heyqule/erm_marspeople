@@ -44,7 +44,6 @@ local addRaceSettings = function()
     end
 
     race_settings.race =  race_settings.race or MOD_NAME
-    race_settings.version =  race_settings.version or MOD_VERSION
     race_settings.level =  race_settings.level or 1
     race_settings.tier =  race_settings.tier or 1
     race_settings.evolution_point =  race_settings.evolution_point or 0
@@ -113,20 +112,6 @@ Event.register(defines.events.on_script_trigger_effect, function(event)
             CustomAttacks.valid(event, MOD_NAME)
     then
         attack_functions[event.effect_id](event)
-    end
-end)
-
----
---- Modify Race Settings for existing game
----
-Event.register(Event.generate_event_name(ErmConfig.RACE_SETTING_UPDATE), function(event)
-    local race_setting = remote.call('enemy_race_manager', 'get_race', MOD_NAME)
-    if (event.affected_race == MOD_NAME) and race_setting then
-        if race_setting.version < MOD_VERSION then
-
-            race_setting.version = MOD_VERSION
-        end
-        remote.call('enemy_race_manager', 'update_race_setting', race_setting)
     end
 end)
 
