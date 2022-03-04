@@ -38,56 +38,51 @@ local createRace = function()
 end
 
 local addRaceSettings = function()
-    if remote.call('enemy_race_manager', 'get_race', MOD_NAME) then
-        return
+    local race_settings = remote.call('enemy_race_manager', 'get_race', MOD_NAME)
+    if race_settings == nil then
+        race_settings = {}
     end
-    local race_settings = {
-        race = MOD_NAME,
-        version = MOD_VERSION,
-        level = 1, -- Race level
-        tier = 1, -- Race tier
-        evolution_point = 0,
-        evolution_base_point = 0,
-        attack_meter = 0, -- Build by killing their force (Spawner = 50, turrets = 10, unit = 1)
-        next_attack_threshold = 0, -- Used by system to calculate next move
-        units = {
-            { 'marspeople', 'miniufo' },
-            { 'eye-ufo-a', 'eye-ufo-b', 'marspeople-icy', 'daimanji-dropship', 'marspeople-builder'},
-            { 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
-        },
-        current_units_tier = {},
-        turrets = {
-            {'laser-turret'},
-            {'thunderbolt-turret'},
-            {},
-        },
-        current_turrets_tier = {},
-        command_centers = {
-            {'tencore'},
-            {},
-            {}
-        },
-        current_command_centers_tier = {},
-        support_structures = {
-            {'entrance_en','entrance_jp'},
-            {'exit_en','exit_jp'},
-            {},
-        },
-        current_support_structures_tier = {},
-        flying_units = {
-            {'miniufo'},
-            {'eye-ufo-a','eye-ufo-b'},
-            {'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt'}
-        },
-        dropship = 'daimanji-dropship'
-    }
 
-    race_settings.current_units_tier = race_settings.units[1]
-    race_settings.current_turrets_tier = race_settings.turrets[1]
-    race_settings.current_command_centers_tier = race_settings.command_centers[1]
-    race_settings.current_support_structures_tier = race_settings.support_structures[1]
+    race_settings.race =  race_settings.race or MOD_NAME
+    race_settings.level =  race_settings.level or 1
+    race_settings.tier =  race_settings.tier or 1
+    race_settings.evolution_point =  race_settings.evolution_point or 0
+    race_settings.evolution_base_point =  race_settings.evolution_base_point or 0
+    race_settings.attack_meter = race_settings.attack_meter or 0
+    race_settings.attack_meter_total = race_settings.attack_meter_total or 0
+    race_settings.next_attack_threshold = race_settings.next_attack_threshold or 0
+
+    race_settings.units = {
+        { 'marspeople', 'miniufo' },
+        { 'eye-ufo-a', 'eye-ufo-b', 'marspeople-icy', 'daimanji-dropship', 'marspeople-builder'},
+        { 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
+    }
+    race_settings.turrets = {
+        {'laser-turret'},
+        {'thunderbolt-turret'},
+        {},
+    }
+    race_settings.command_centers = {
+        {'tencore'},
+        {},
+        {}
+    }
+    race_settings.support_structures = {
+        {'entrance_en','entrance_jp'},
+        {'exit_en','exit_jp'},
+        {},
+    }
+    race_settings.flying_units = {
+        {'miniufo'},
+        {'eye-ufo-a','eye-ufo-b'},
+        {'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt'}
+    }
+    race_settings.dropship = 'daimanji-dropship'
 
     remote.call('enemy_race_manager', 'register_race', race_settings)
+
+    Event.dispatch({
+        name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })
 end
 
 Event.on_init(function(event)
@@ -100,32 +95,23 @@ end)
 
 Event.on_configuration_changed(function(event)
     createRace()
-    -- Mod Compatibility Upgrade for race settings
-    Event.dispatch({
-        name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })
+    addRaceSettings()
 end)
 
-Event.register(defines.events.on_script_trigger_effect, function(event)
-    if CustomAttacks.valid(event, MOD_NAME) then
-        if event.effect_id == MARSPEOPLE_DROPSHIP_ATTACK then
-            CustomAttacks.process_dropship(event)
-        elseif event.effect_id == MARSPEOPLE_BUILDER_ATTACK then
-            CustomAttacks.process_builder(event)
-        end
+local attack_functions =
+{
+    [MARSPEOPLE_DROPSHIP_ATTACK] = function(args)
+        CustomAttacks.process_dropship(args)
+    end,
+    [MARSPEOPLE_BUILDER_ATTACK] = function(args)
+        CustomAttacks.process_builder(args)
     end
-end)
-
----
---- Modify Race Settings for existing game
----
-Event.register(Event.generate_event_name(ErmConfig.RACE_SETTING_UPDATE), function(event)
-    local race_setting = remote.call('enemy_race_manager', 'get_race', MOD_NAME)
-    if (event.affected_race == MOD_NAME) and race_setting then
-        if race_setting.version < MOD_VERSION then
-
-            race_setting.version = MOD_VERSION
-        end
-        remote.call('enemy_race_manager', 'update_race_setting', race_setting)
+}
+Event.register(defines.events.on_script_trigger_effect, function(event)
+    if  attack_functions[event.effect_id] and
+            CustomAttacks.valid(event, MOD_NAME)
+    then
+        attack_functions[event.effect_id](event)
     end
 end)
 

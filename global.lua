@@ -7,9 +7,8 @@
 -- Globals within the mod
 MOD_NAME = 'erm_marspeople'
 FORCE_NAME = 'enemy_erm_marspeople'
-MOD_VERSION = 100
 
 DEBUG_MODE = false
 
-MARSPEOPLE_DROPSHIP_ATTACK = 'marspeople-dropship-attack'
-MARSPEOPLE_BUILDER_ATTACK = 'marspeople-builder-attack'
+MARSPEOPLE_DROPSHIP_ATTACK = 'emars-drp'
+MARSPEOPLE_BUILDER_ATTACK = 'emars-bld'
