@@ -78,11 +78,30 @@ local addRaceSettings = function()
         {'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt'}
     }
     race_settings.dropship = 'daimanji-dropship'
+    race_settings.droppable_units = {
+        {{ 'marspeople', 'miniufo' }, {2, 1}},
+        {{ 'marspeople', 'marspeople-icy', 'miniufo', 'eye-ufo-a' }, {2, 2, 1, 1}},
+        {{ 'marspeople', 'marspeople-icy', 'marspeople-fire', 'ufo', 'miniufo', 'eye-ufo-a', 'eye-ufo-b' }, {2, 2, 2, 1, 1, 1, 1}},
+    }
+    race_settings.construction_buildings = {
+        {{ 'shortrange-laser-turret'}, {1}},
+        {{ 'shortrange-laser-turret'}, {1}},
+        {{ 'shortrange-laser-turret','exit_en', 'exit_jp'}, {3,1,1}},
+    }
+    race_settings.featured_groups = {
+        --Unit list, spawn ratio
+        {{'marspeople','miniufo'}, {2, 1}},
+        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}},
+    }
+    race_settings.featured_flying_groups = {
+        {{'miniufo'}, {1}},
+        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}},
+    }
+
+    ErmRaceSettingsHelper.process_unit_spawn_rate_cache(race_settings)
 
     remote.call('enemy_race_manager', 'register_race', race_settings)
 
-    Event.dispatch({
-        name = Event.get_event_name(ErmConfig.RACE_SETTING_UPDATE), affected_race = MOD_NAME })
 end
 
 Event.on_init(function(event)
