@@ -5,9 +5,26 @@ Date: ???
   Features:
     - Added support for featured squad
     - Added support for elite squad
+    --- Featured Squad Details ---
+    -- Unit list, spawn ratio, unit attack point cost
+    - {{'marspeople','miniufo'}, {2, 1}, 20},
+    - {{'marspeople','miniufo','daimanji-thunderbolt'}, {2, 2, 1}, 20},
+    - {{'marspeople','miniufo', 'daimanji-purpleball'}, {2, 2, 1}, 20},
+    - {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 20},
+    - {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 25},
+    - {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 25}
+    ------------------------------
+    --- Featured Flying Squad Details ---
+    - {{'miniufo'}, {1}, 30},
+    - {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 40},
+    - {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60},
+    - {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60}
+    -------------------------------------
 
   Changes:
     - Dropship unit dropping timer changed from 15-10s to 45-30s
+    - Increased Health on various units
+    - Added max_range to projectiles
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0

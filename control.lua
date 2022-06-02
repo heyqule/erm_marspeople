@@ -89,13 +89,19 @@ local addRaceSettings = function()
         {{ 'shortrange-laser-turret','exit_en', 'exit_jp'}, {3,1,1}},
     }
     race_settings.featured_groups = {
-        --Unit list, spawn ratio
-        {{'marspeople','miniufo'}, {2, 1}},
-        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}},
+        -- Unit list, spawn ratio, unit attack point cost
+        {{'marspeople','miniufo'}, {2, 1}, 20},
+        {{'marspeople','miniufo','daimanji-thunderbolt'}, {2, 2, 1}, 20},
+        {{'marspeople','miniufo', 'daimanji-purpleball'}, {2, 2, 1}, 20},
+        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 20},
+        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 25},
+        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 25}
     }
     race_settings.featured_flying_groups = {
-        {{'miniufo'}, {1}},
-        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}},
+        {{'miniufo'}, {1}, 30},
+        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 40},
+        {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60},
+        {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60}
     }
 
     ErmRaceSettingsHelper.process_unit_spawn_rate_cache(race_settings)
