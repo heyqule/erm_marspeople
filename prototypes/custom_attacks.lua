@@ -9,11 +9,11 @@ local CustomAttacks = {}
 
 CustomAttacks.valid = CustomAttackHelper.valid
 
-function CustomAttacks.process_overlord(event)
+function CustomAttacks.process_dropship(event)
     CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'droppable_units'))
 end
 
-function CustomAttacks.process_drone(event)
+function CustomAttacks.process_builder(event)
     CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'construction_buildings'))
     event.source_entity.die('neutral')
 end

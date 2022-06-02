@@ -10,7 +10,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople-builder'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 80
+local hitpoint = 100
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value

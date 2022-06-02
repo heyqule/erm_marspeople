@@ -14,7 +14,7 @@ local name = 'ufo'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local hitpoint = 200
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -116,7 +116,7 @@ function ErmMarsPeople.make_ufo(level)
                             type = "projectile",
                             projectile = 'ufo-projectile',
                             starting_speed = 0.3,
-                            max_range = ERM_Config.get_max_projectile_range(),
+                            max_range = ERM_Config.get_max_projectile_range(2),
                         }
                     }
                 },
