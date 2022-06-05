@@ -16,7 +16,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-dropship'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 200
+local hitpoint = 400
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -43,8 +43,8 @@ local incremental_laser_damage = 7
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_attack_speed = 600
-local incremental_attack_speed = 300
+local base_attack_speed = 2700
+local incremental_attack_speed = 900
 
 local attack_range = 3
 

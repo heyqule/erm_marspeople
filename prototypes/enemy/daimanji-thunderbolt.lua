@@ -17,7 +17,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-thunderbolt'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 150
+local hitpoint = 300
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -44,7 +44,7 @@ local incremental_laser_damage = 2.5
 
 -- Handles Attack Speed
 local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_attack_speed = 240
+local base_attack_speed = 300
 local incremental_attack_speed = 120
 
 local attack_range = ERM_Config.get_max_attack_range()
@@ -120,7 +120,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                             type = "projectile",
                             projectile = 'daimanji-thunderbolt',
                             starting_speed = 0.5,
-                            max_range = ERM_Config.get_max_projectile_range(),
+                            max_range = ERM_Config.get_max_projectile_range(2),
                         }
                     }
                 },

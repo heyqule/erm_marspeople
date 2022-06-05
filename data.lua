@@ -41,9 +41,9 @@ require "prototypes.enemy.daimanji-purpleball"
 require "prototypes.enemy.daimanji-dropship"
 require "prototypes.enemy.daimanji-thunderbolt"
 
-local level = ErmConfig.MAX_LEVELS
+local max_level = ErmConfig.MAX_LEVELS
 
-for i = 1, level do
+for i = 1, max_level + ErmConfig.MAX_ELITE_LEVELS do
     --Units
     ErmMarsPeople.make_miniufo(i)
     ErmMarsPeople.make_ufo(i)
@@ -56,7 +56,9 @@ for i = 1, level do
     ErmMarsPeople.make_daimanji_purpleball(i)
     ErmMarsPeople.make_daimanji_dropship(i)
     ErmMarsPeople.make_daimanji_thunderbolt(i)
+end
 
+for i = 1, max_level do
     --Building
     ErmMarsPeople.make_tencore(i)
     ErmMarsPeople.make_entrance_jp(i)

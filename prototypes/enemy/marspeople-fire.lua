@@ -5,6 +5,7 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople-fire'
@@ -114,6 +115,7 @@ function ErmMarsPeople.make_marspeople_fire(level)
                             type = "projectile",
                             projectile = 'marspeople-fire-projectile',
                             starting_speed = 0.1,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },
