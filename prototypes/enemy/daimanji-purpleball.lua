@@ -16,7 +16,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-purpleball'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 175
+local hitpoint = 350
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value

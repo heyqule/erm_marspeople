@@ -5,12 +5,13 @@ local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
+local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local hitpoint = 80
+local hitpoint = 100
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
@@ -113,6 +114,7 @@ function ErmMarsPeople.make_marspeople(level)
                             type = "projectile",
                             projectile = 'marspeople-projectile',
                             starting_speed = 0.1,
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },

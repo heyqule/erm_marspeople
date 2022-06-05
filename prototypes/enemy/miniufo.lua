@@ -12,7 +12,7 @@ local name = 'miniufo'
 
 local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
 local hitpoint = 100
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
 local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
 -- Handles acid and poison resistance
@@ -113,7 +113,7 @@ function ErmMarsPeople.make_miniufo(level)
                             type = "projectile",
                             projectile = 'mini-ufo-projectile',
                             starting_speed = 0.3,
-                            max_range = ERM_Config.get_max_projectile_range(),
+                            max_range = ERM_Config.get_max_projectile_range(2)
                         }
                     }
                 },
