@@ -35,6 +35,8 @@ local createRace = function()
     else
         ErmForceHelper.set_friends(game, FORCE_NAME, true)
     end
+
+    ErmForceHelper.set_neutral_force(game, FORCE_NAME)
 end
 
 local addRaceSettings = function()
