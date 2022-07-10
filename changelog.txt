@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2022-xx-xx
+
+  Changes:
+    - Improve unit performance by changing enemies distraction_cooldown from 20 to 300.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2022-06-22
 
-  Change:
+  Changes:
     - Added support to set neutral for neutral forces that created from other mods.
 
 
@@ -21,13 +28,13 @@ Date: 2022-06-06
     - {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 20},
     - {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 25},
     - {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 25}
-    - -----------------------------
+    - -- / Featured Squad Details --
     - -- Featured Flying Squad Details ---
     - {{'miniufo'}, {1}, 30},
     - {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 40},
     - {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60},
     - {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60}
-    - ------------------------------------
+    - -- / Featured Flying Squad Details --
 
   Changes:
     - Dropship unit cooldown changed from 15-10s to 45-30s
