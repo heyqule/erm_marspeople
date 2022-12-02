@@ -83,6 +83,7 @@ function ErmMarsPeople.make_thunderbolt_turret(level)
         { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
         { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
     }
+    marspeople_thunderbolt_turret['map_color'] = MS_MAP_COLOR
     marspeople_thunderbolt_turret['collision_box'] = collision_box
     marspeople_thunderbolt_turret['selection_box'] = selection_box
     marspeople_thunderbolt_turret['map_generator_bounding_box'] = map_generator_bounding_box

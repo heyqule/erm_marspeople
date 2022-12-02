@@ -85,6 +85,7 @@ function ErmMarsPeople.make_laser_turret(level)
         { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
         { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
     }
+    marspeople_laser_turret['map_color'] = MS_MAP_COLOR
     marspeople_laser_turret['collision_box'] = collision_box
     marspeople_laser_turret['selection_box'] = selection_box
     marspeople_laser_turret['map_generator_bounding_box'] = map_generator_bounding_box
@@ -149,10 +150,11 @@ function ErmMarsPeople.make_laser_turret(level)
         { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
         { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
     }
+    marspeople_shortrange_laser_turret['map_color'] = MS_MAP_COLOR
     marspeople_shortrange_laser_turret['collision_box'] = collision_box
     marspeople_shortrange_laser_turret['selection_box'] = selection_box
     marspeople_shortrange_laser_turret['map_generator_bounding_box'] = map_generator_bounding_box
-    marspeople_shortrange_laser_turret['autoplace'] = enemy_autoplace.enemy_worm_autoplace(0, FORCE_NAME)
+    marspeople_shortrange_laser_turret['autoplace'] = nil
     marspeople_shortrange_laser_turret['call_for_help_radius'] = 50
     marspeople_shortrange_laser_turret['spawn_decorations_on_expansion'] = false
     marspeople_shortrange_laser_turret['energy_source'] = nil
