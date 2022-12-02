@@ -12,3 +12,5 @@ DEBUG_MODE = false
 
 MARSPEOPLE_DROPSHIP_ATTACK = 'emars-drp'
 MARSPEOPLE_BUILDER_ATTACK = 'emars-bld'
+
+MS_MAP_COLOR = { r = 140, g = 132, b = 99, a = 255 }
