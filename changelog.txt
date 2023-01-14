@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 2023-01-13
+
+  Changes:
+    - Add support for pollution to join attack multiplier setting
+
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2022-12-12
+
+  Changes:
+    - Refactored Level Strength Multiplier for ERM 1.16.
+    - Change map color to dark grey, which has a bit more contrast than previous one.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2022-12-01
 

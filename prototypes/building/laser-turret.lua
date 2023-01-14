@@ -23,11 +23,11 @@ local name = 'laser-turret'
 local shortrange_name = 'shortrange-laser-turret'
 
 -- Hitpoints
-local health_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
+
 local hitpoint = 400
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 1.5
 
-local resistance_mutiplier = settings.startup["enemyracemanager-level-multipliers"].value
+
 -- Handles acid and poison resistance
 local base_acid_resistance = 0
 local incremental_acid_resistance = 75
@@ -45,12 +45,12 @@ local base_cold_resistance = 15
 local incremental_cold_resistance = 65
 
 -- Handles laser damage multipliers
-local damage_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
-local base_laser_damage_multiplier = 3
-local incremental_laser_damage_multiplier = 12
+
+local base_laser_damage = 3
+local incremental_laser_damage = 12
 
 -- Handles Attack Speed
-local attack_speed_multiplier = settings.startup["enemyracemanager-level-multipliers"].value
+
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
@@ -72,18 +72,18 @@ function ErmMarsPeople.make_laser_turret(level)
     marspeople_laser_turret['name'] = MOD_NAME .. '/' .. name .. '/' .. level
     marspeople_laser_turret['localised_name'] = { 'entity-name.' .. MOD_NAME .. '/' .. name, level }
     marspeople_laser_turret['flag'] = { "placeable-player", "placeable-enemy" }
-    marspeople_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level)
-    marspeople_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, health_multiplier, level)
+    marspeople_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier,  level)
+    marspeople_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier,  level)
     marspeople_laser_turret['order'] = MOD_NAME .. "-" .. name
     marspeople_laser_turret['resistance'] = {
-        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
-        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
-        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, resistance_mutiplier, level) },
-        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
-        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
-        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
-        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
-        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
+        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
+        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
+        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance,  level) },
+        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
+        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
+        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
+        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
+        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
     }
     marspeople_laser_turret['map_color'] = MS_MAP_COLOR
     marspeople_laser_turret['collision_box'] = collision_box
@@ -96,10 +96,10 @@ function ErmMarsPeople.make_laser_turret(level)
 
     -- Attack Changes
     marspeople_laser_turret['attack_parameters']['ammo_category'] = "marspeople-damage"
-    marspeople_laser_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level)
+    marspeople_laser_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level)
     marspeople_laser_turret['attack_parameters']['cooldown_deviation'] = 0.1
     marspeople_laser_turret['attack_parameters']['range'] = attack_range
-    marspeople_laser_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage_multiplier, incremental_laser_damage_multiplier, damage_multiplier, level)
+    marspeople_laser_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage,  level)
 
     marspeople_laser_turret['attack_parameters']['ammo_type'] = {
         category = "marspeople-damage",
@@ -137,18 +137,18 @@ function ErmMarsPeople.make_laser_turret(level)
     marspeople_shortrange_laser_turret['name'] = MOD_NAME .. '/' .. shortrange_name .. '/' .. level
     marspeople_shortrange_laser_turret['localised_name'] = { 'entity-name.' .. MOD_NAME .. '/' .. shortrange_name, level }
     marspeople_shortrange_laser_turret['flag'] = { "placeable-player", "placeable-enemy" }
-    marspeople_shortrange_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, health_multiplier, level)
-    marspeople_shortrange_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, health_multiplier, level)
+    marspeople_shortrange_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier,  level)
+    marspeople_shortrange_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier,  level)
     marspeople_shortrange_laser_turret['order'] = MOD_NAME .. "-" .. shortrange_name
     marspeople_shortrange_laser_turret['resistance'] = {
-        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
-        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, resistance_mutiplier, level) },
-        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, resistance_mutiplier, level) },
-        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
-        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, resistance_mutiplier, level) },
-        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
-        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, resistance_mutiplier, level) },
-        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, resistance_mutiplier, level) }
+        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
+        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
+        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance,  level) },
+        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
+        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
+        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
+        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
+        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
     }
     marspeople_shortrange_laser_turret['map_color'] = MS_MAP_COLOR
     marspeople_shortrange_laser_turret['collision_box'] = collision_box
@@ -161,10 +161,10 @@ function ErmMarsPeople.make_laser_turret(level)
 
     -- Attack Changes
     marspeople_shortrange_laser_turret['attack_parameters']['ammo_category'] = "marspeople-damage"
-    marspeople_shortrange_laser_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, attack_speed_multiplier, level)
+    marspeople_shortrange_laser_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level)
     marspeople_shortrange_laser_turret['attack_parameters']['cooldown_deviation'] = 0.1
     marspeople_shortrange_laser_turret['attack_parameters']['range'] = shortrange_attack_range
-    marspeople_shortrange_laser_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage_multiplier, incremental_laser_damage_multiplier, damage_multiplier, level)
+    marspeople_shortrange_laser_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage,  level)
 
     marspeople_shortrange_laser_turret['attack_parameters']['ammo_type'] = {
         category = "marspeople-damage",
