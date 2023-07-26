@@ -4,7 +4,7 @@ Date: 2023-??-??
 
     Features:
       - ERM 1.18 Compatibility Changes
-      - Updated unit for dynamic attack range
+      - Updated unit for dynamic attack range and dynamic vision distance
 
     Changes:
       - Systematic despawn units use destroy(), instead of die()
