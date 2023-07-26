@@ -109,7 +109,6 @@ data:extend({
             frame_count = 3,
             width = 32,
             height = 32,
-            priority = "high",
             animation_speed = 0.4,
             draw_as_glow = true,
         }
@@ -158,7 +157,6 @@ data:extend({
             frame_count = 1,
             width = 8,
             height = 35,
-            priority = "high",
             animation_speed = 1,
             draw_as_glow = true,
         }
@@ -207,7 +205,6 @@ data:extend({
             frame_count = 8,
             width = 32,
             height = 32,
-            priority = "high",
             animation_speed = 0.5,
             draw_as_glow = true,
         }
@@ -256,7 +253,6 @@ data:extend({
             frame_count = 12,
             width = 48,
             height = 64,
-            priority = "high",
             animation_speed = 0.5,
             draw_as_glow = true,
         }
@@ -310,7 +306,6 @@ data:extend({
             frame_count = 20,
             width = 96,
             height = 192,
-            priority = "high",
             animation_speed = 0.5,
             line_length = 10,
             lines_per_file = 2,
@@ -349,7 +344,6 @@ data:extend({
             frame_count = 12,
             width = 32,
             height = 32,
-            priority = "high",
             animation_speed = 0.4,
             run_mode = "forward-then-backward",
         }
@@ -387,7 +381,6 @@ data:extend({
             frame_count = 12,
             width = 32,
             height = 32,
-            priority = "high",
             animation_speed = 0.4,
             run_mode = "forward-then-backward",
         }
@@ -424,7 +417,6 @@ data:extend({
             frame_count = 12,
             width = 32,
             height = 32,
-            priority = "high",
             animation_speed = 0.4,
             run_mode = "forward-then-backward",
         }

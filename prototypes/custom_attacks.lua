@@ -15,7 +15,7 @@ end
 
 function CustomAttacks.process_builder(event)
     CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'construction_buildings'))
-    event.source_entity.die('neutral')
+    event.source_entity.destroy()
 end
 
 return CustomAttacks

@@ -41,7 +41,7 @@ local incremental_laser_damage = 4
 local base_attack_speed = 120
 local incremental_attack_speed = 60
 
-local attack_range = 9
+local attack_range = math.ceil(ERM_Config.get_max_attack_range() * 0.5)
 
 
 local base_movement_speed = 0.1

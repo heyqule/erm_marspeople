@@ -11,8 +11,6 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 
 local name = 'ufo'
 
-
-
 local hitpoint = 200
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
 
@@ -43,7 +41,7 @@ local incremental_laser_damage = 5
 local base_attack_speed = 180
 local incremental_attack_speed = 90
 
-local attack_range = 6
+local attack_range = math.ceil(ERM_Config.get_max_attack_range() * 0.5)
 
 
 local base_movement_speed = 0.1
