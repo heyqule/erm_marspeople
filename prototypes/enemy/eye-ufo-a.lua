@@ -84,7 +84,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                 { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
                 { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
             },
-            map_color = MS_MAP_COLOR,
+            map_color = ERM_UnitHelper.format_map_color(settings.startup['erm_marspeople-map-color'].value),
             healing_per_tick = ERM_UnitHelper.get_healing(hitpoint, max_hitpoint_multiplier,  level),
             collision_mask = ERMDataHelper.getFlyingCollisionMask(),
             collision_box = collision_box,

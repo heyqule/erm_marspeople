@@ -85,7 +85,7 @@ function ErmMarsPeople.make_laser_turret(level)
         { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
         { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
     }
-    marspeople_laser_turret['map_color'] = MS_MAP_COLOR
+    marspeople_laser_turret['map_color'] = ERM_UnitHelper.format_map_color(settings.startup['erm_marspeople-map-color'].value)
     marspeople_laser_turret['collision_box'] = collision_box
     marspeople_laser_turret['selection_box'] = selection_box
     marspeople_laser_turret['map_generator_bounding_box'] = map_generator_bounding_box

@@ -11,7 +11,7 @@ local Game = require('__stdlib__/stdlib/game')
 local ErmConfig = require('__enemyracemanager__/lib/global_config')
 local ErmForceHelper = require('__enemyracemanager__/lib/helper/force_helper')
 local ErmRaceSettingsHelper = require('__enemyracemanager__/lib/helper/race_settings_helper')
-local CustomAttacks = require('__erm_marspeople__/prototypes/custom_attacks')
+local CustomAttacks = require('__erm_marspeople__/scripts/custom_attacks')
 
 local Event = require('__stdlib__/stdlib/event/event')
 local String = require('__stdlib__/stdlib/utils/string')
@@ -95,20 +95,24 @@ local addRaceSettings = function()
     }
     race_settings.featured_groups = {
         -- Unit list, spawn ratio, unit attack point cost
-        {{'marspeople','miniufo', 'ufo'}, {2, 1, 1}, 20},
-        {{'marspeople','miniufo', 'ufo','daimanji-thunderbolt'}, {2, 2, 1, 1}, 20},
-        {{'marspeople','miniufo', 'ufo','daimanji-purpleball'}, {2, 2, 1, 1}, 20},
-        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 20},
-        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 25},
-        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 25}
+        {{'marspeople','miniufo', 'ufo'}, {2, 1, 1}, 25},
+        {{'marspeople','miniufo', 'ufo','daimanji-thunderbolt'}, {2, 2, 1, 1}, 25},
+        {{'marspeople','miniufo', 'ufo','daimanji-purpleball'}, {2, 2, 1, 1}, 25},
+        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 25},
+        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 30},
+        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 30}
     }
     race_settings.featured_flying_groups = {
-        {{'miniufo', 'ufo'}, {2, 1}, 30},
-        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 40},
-        {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60},
-        {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 60},
-        {{'daimanji-thunderbolt', 'daimanji-purpleball', 'eye-ufo-a', 'eye-ufo-b'}, {1, 1,2,2}, 50}
+        {{'miniufo', 'ufo'}, {2, 1}, 50},
+        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 60},
+        {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 75},
+        {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 75},
+        {{'daimanji-thunderbolt', 'daimanji-purpleball', 'eye-ufo-a', 'eye-ufo-b'}, {1, 1,2,2}, 60}
     }
+
+    if game.active_mods['Krastorio2'] then
+        race_settings.enable_k2_creep = settings.startup['erm_marspeople-k2-creep'].value
+    end
 
     ErmRaceSettingsHelper.process_unit_spawn_rate_cache(race_settings)
 
