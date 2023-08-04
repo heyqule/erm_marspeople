@@ -10,7 +10,17 @@ local CustomAttacks = {}
 CustomAttacks.valid = CustomAttackHelper.valid
 
 function CustomAttacks.process_dropship(event)
-    CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'droppable_units'), 2)
+    local race_settings = CustomAttackHelper.get_race_settings(MOD_NAME)
+    CustomAttackHelper.drop_unit(event, MOD_NAME, 'marspeople', 2)
+    if CustomAttackHelper.can_spawn(75) then
+        CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'droppable_units'))
+    end
+    if race_settings.tier == 3 and CustomAttackHelper.can_spawn(40) then
+        CustomAttackHelper.drop_unit(event, MOD_NAME, 'miniufo', 2)
+        if CustomAttackHelper.can_spawn(25) then
+            CustomAttackHelper.drop_unit(event, MOD_NAME, CustomAttackHelper.get_unit(MOD_NAME, 'droppable_units'), 1)
+        end
+    end
 
 end
 

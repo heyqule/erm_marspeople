@@ -84,9 +84,9 @@ local addRaceSettings = function()
     }
     race_settings.dropship = 'daimanji-dropship'
     race_settings.droppable_units = {
-        {{ 'marspeople', 'miniufo' }, {2, 1}},
-        {{ 'marspeople', 'marspeople-icy', 'miniufo', 'eye-ufo-a' }, {2, 2, 1, 1}},
-        {{ 'marspeople', 'marspeople-icy', 'marspeople-fire', 'ufo', 'miniufo', 'eye-ufo-a', 'eye-ufo-b' }, {2, 2, 2, 1, 1, 1, 1}},
+        {{ 'miniufo' }, {1}},
+        {{ 'marspeople-icy', 'miniufo', 'eye-ufo-a' }, {2, 1, 1}},
+        {{ 'marspeople-icy', 'marspeople-fire', 'ufo', 'miniufo', 'eye-ufo-a', 'eye-ufo-b' }, {2, 2, 1, 1, 1, 1}},
     }
     race_settings.construction_buildings = {
         {{ 'shortrange-laser-turret'}, {1}},
