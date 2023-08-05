@@ -24,8 +24,8 @@ data:extend(
 -- This set of data is used for set up default autoplace calculation.
 data.erm_spawn_specs = data.erm_spawn_specs or {}
 table.insert(data.erm_spawn_specs, {
-    name=MOD_NAME,
-    force=FORCE_NAME,
+    mod_name=MOD_NAME,
+    force_name=FORCE_NAME,
     moisture=1, -- 1 = Wet and 2 = Dry
     aux=1, -- 1 = red desert, 2 = sand
     elevation=1, --1,2,3 (1 low elevation, 2. medium, 3 high elavation)
