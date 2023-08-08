@@ -46,7 +46,7 @@ local addRaceSettings = function()
     end
 
     race_settings.race =  race_settings.race or MOD_NAME
-    race_settings.label = {'gui.label-marspeople'}
+    race_settings.label = {'gui.label-erm_marspeople'}
     race_settings.level =  race_settings.level or 1
     race_settings.tier =  race_settings.tier or 1
     race_settings.evolution_point =  race_settings.evolution_point or 0
