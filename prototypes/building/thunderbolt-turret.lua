@@ -53,7 +53,7 @@ local incremental_laser_damage = 5
 local base_attack_speed = 240
 local incremental_attack_speed = 120
 
-local attack_range = 30
+local attack_range = ERM_Config.get_max_attack_range() + 16
 
 local collision_box = { { -0.7, -0.7 }, { 0.7, 0.7 } }
 local map_generator_bounding_box = { { -2.5, -2.5 }, { 2.5, 2.5 } }
