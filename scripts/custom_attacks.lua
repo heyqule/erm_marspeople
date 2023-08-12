@@ -8,6 +8,7 @@ local CustomAttackHelper = require('__enemyracemanager__/lib/helper/custom_attac
 local CustomAttacks = {}
 
 CustomAttacks.valid = CustomAttackHelper.valid
+CustomAttacks.get_race_settings = CustomAttackHelper.get_race_settings
 
 function CustomAttacks.process_dropship(event)
     local race_settings = CustomAttackHelper.get_race_settings(MOD_NAME)
