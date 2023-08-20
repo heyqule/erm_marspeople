@@ -7,7 +7,7 @@
 local MarsPeopleSound = {}
 
 function MarsPeopleSound.mars_people_death(volume)
-    return  {
+    return {
         variations = {
             {
                 filename = "__erm_marspeople__/sounds/death/mp_death.ogg",
@@ -22,28 +22,28 @@ function MarsPeopleSound.mars_people_death(volume)
 end
 
 function MarsPeopleSound.mini_ufo_death(volume)
-    return  {
+    return {
         filename = "__erm_marspeople__/sounds/death/mini_ufo_death.ogg",
         volume = volume
     }
 end
 
 function MarsPeopleSound.mars_people_attack(volume)
-    return  {
+    return {
         filename = "__erm_marspeople__/sounds/projectile/mars_people_attack.ogg",
         volume = volume
     }
 end
 
 function MarsPeopleSound.electric_attack_attack(volume)
-    return  {
+    return {
         filename = "__erm_marspeople__/sounds/projectile/electric_attack.ogg",
         volume = volume
     }
 end
 
 function MarsPeopleSound.laser_attack(volume)
-    return  {
+    return {
         filename = "__erm_marspeople__/sounds/projectile/laser_attack.ogg",
         volume = volume
     }

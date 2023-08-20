@@ -16,7 +16,6 @@ local ERM_Config = require('__enemyracemanager__/lib/global_config')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'daimanji-thunderbolt'
 
-
 local hitpoint = 300
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
@@ -49,7 +48,6 @@ local incremental_attack_speed = 120
 
 local attack_range = ERM_Config.get_max_attack_range()
 
-
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
@@ -74,30 +72,30 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
             localised_name = { 'entity-name.' .. MOD_NAME .. '/' .. name, level },
             icon = "__erm_marspeople__/graphics/entity/icons/units/" .. name .. ".png",
             icon_size = 64,
-            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid", "not-flammable"},
+            flags = { "placeable-enemy", "placeable-player", "placeable-off-grid", "not-flammable" },
             has_belt_immunity = true,
-            max_health = ERM_UnitHelper.get_health(hitpoint, hitpoint * max_hitpoint_multiplier,  level),
-            order = MOD_NAME .. '/'  .. name .. '/' .. level,
+            max_health = ERM_UnitHelper.get_health(hitpoint, hitpoint * max_hitpoint_multiplier, level),
+            order = MOD_NAME .. '/' .. name .. '/' .. level,
             subgroup = "enemies",
             shooting_cursor_size = 2,
             resistances = {
-                { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-                { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-                { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance,  level) },
-                { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-                { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-                { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-                { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-                { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
+                { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+                { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+                { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, level) },
+                { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+                { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+                { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+                { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+                { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, level) }
             },
             map_color = ERM_UnitHelper.format_map_color(settings.startup['erm_marspeople-map-color'].value),
-            healing_per_tick = ERM_UnitHelper.get_healing(hitpoint, max_hitpoint_multiplier,  level),
+            healing_per_tick = ERM_UnitHelper.get_healing(hitpoint, max_hitpoint_multiplier, level),
             collision_mask = ERMDataHelper.getFlyingCollisionMask(),
             collision_box = collision_box,
             selection_box = selection_box,
             sticker_box = selection_box,
             vision_distance = vision_distance,
-            movement_speed = ERM_UnitHelper.get_movement_speed(base_movement_speed, incremental_movement_speed,  level),
+            movement_speed = ERM_UnitHelper.get_movement_speed(base_movement_speed, incremental_movement_speed, level),
             pollution_to_join_attack = ERM_UnitHelper.get_pollution_attack(pollution_to_join_attack, level),
             distraction_cooldown = distraction_cooldown,
             ai_settings = biter_ai_settings,
@@ -107,9 +105,9 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                 ammo_category = 'marspeople-damage',
                 range = attack_range,
                 min_attack_distance = attack_range - 4,
-                cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level),
+                cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, level),
                 cooldown_deviation = 0.1,
-                damage_modifier =  ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage,  level),
+                damage_modifier = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, level),
                 warmup = 48,
                 use_shooter_direction = true,
                 projectile_center = util.by_pixel(0, 100),
@@ -162,7 +160,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                             tint = ERM_UnitTint.tint_shadow(),
                             draw_as_shadow = true,
                             animation_speed = 0.5,
-                            shift = { 4, 0},
+                            shift = { 4, 0 },
                             line_length = 10,
                             lines_per_file = 3,
                         },
@@ -205,7 +203,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                         direction_count = 1,
                         scale = unit_scale,
                         animation_speed = 0.5,
-                        shift= util.by_pixel(-1, 90)
+                        shift = util.by_pixel(-1, 90)
                     },
                     {
                         filename = "__erm_marspeople__/graphics/entity/units/daimanji/daimanji-thunderbolt-run.png",

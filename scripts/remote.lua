@@ -11,13 +11,13 @@ function RemoteAPI.milestones_preset_addons()
     local boss_level = ErmConfig.BOSS_LEVELS
     local preset = {
         ["erm_marspeople"] = {
-            required_mods = {"erm_marspeople"},
+            required_mods = { "erm_marspeople" },
             milestones = {
-                {type="group", name="Kills"},
-                {type="kill", name="erm_marspeople/tencore/5",  quantity=1},
-                {type="kill", name="erm_marspeople/tencore/10",  quantity=1},
-                {type="kill", name="erm_marspeople/tencore/15",  quantity=1},
-                {type="kill", name="erm_marspeople/tencore/20",  quantity=1, next="x10"},
+                { type = "group", name = "Kills" },
+                { type = "kill", name = "erm_marspeople/tencore/5", quantity = 1 },
+                { type = "kill", name = "erm_marspeople/tencore/10", quantity = 1 },
+                { type = "kill", name = "erm_marspeople/tencore/15", quantity = 1 },
+                { type = "kill", name = "erm_marspeople/tencore/20", quantity = 1, next = "x10" },
             }
         },
     }

@@ -6,13 +6,12 @@
 
 
 require('__stdlib__/stdlib/utils/defines/time')
-require ("util")
+require("util")
 
 local ERM_UnitHelper = require('__enemyracemanager__/lib/rig/unit_helper')
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local Base_Sound = require("__base__/prototypes/entity/sounds")
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
-
 
 local enemy_autoplace = require("__enemyracemanager__/lib/enemy-autoplace-utils")
 local name = 'exit_jp'
@@ -43,34 +42,34 @@ local incremental_cold_resistance = 65
 local unit_scale = 2
 
 local pollution_absorption_absolute = 100
-local spawning_cooldown = {720, 480}
+local spawning_cooldown = { 720, 480 }
 local spawning_radius = 10
 local max_count_of_owned_units = 7
 local max_friends_around_to_spawn = 5
 local spawn_table = function(level)
     local res = {}
     --Tier 1
-    res[1] = { MOD_NAME .. '/marspeople/' .. level,          { { 0.0, 0.9 }, { 0.2, 0.7 }, { 0.4, 0.4 }, { 0.6, 0.3 }, { 0.8, 0.2 }, { 1.0, 0.15 } } }
-    res[2] = { MOD_NAME .. '/miniufo/' .. level,             { { 0.0, 0.1 }, { 0.2, 0.3 }, { 0.4, 0.4 }, { 0.6, 0.3 }, { 0.8, 0.2 }, { 1.0, 0.1 } } }
+    res[1] = { MOD_NAME .. '/marspeople/' .. level, { { 0.0, 0.9 }, { 0.2, 0.7 }, { 0.4, 0.4 }, { 0.6, 0.3 }, { 0.8, 0.2 }, { 1.0, 0.15 } } }
+    res[2] = { MOD_NAME .. '/miniufo/' .. level, { { 0.0, 0.1 }, { 0.2, 0.3 }, { 0.4, 0.4 }, { 0.6, 0.3 }, { 0.8, 0.2 }, { 1.0, 0.1 } } }
 
     --Tier 2
-    res[3] = { MOD_NAME .. '/marspeople-icy/' .. level,      { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.1 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.15 } } }
-    res[4] = { MOD_NAME .. '/eye-ufo-a/' .. level,           { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.1 }, { 0.6, 0.15}, { 0.8, 0.2 }, { 1.0, 0.1 } } }
-    res[5] = { MOD_NAME .. '/daimanji-dropship/' .. level,   { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.05 }, { 1.0, 0.05 } } }
-    res[6] = { MOD_NAME .. '/marspeople-builder/' .. level,  { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.05 }, { 1.0, 0.05 } } }
-    res[7] = { MOD_NAME .. '/eye-ufo-b/' .. level,           { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.05 }, { 0.8, 0.1 }, { 1.0, 0.1 } } }
+    res[3] = { MOD_NAME .. '/marspeople-icy/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.1 }, { 0.6, 0.2 }, { 0.8, 0.2 }, { 1.0, 0.15 } } }
+    res[4] = { MOD_NAME .. '/eye-ufo-a/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.1 }, { 0.6, 0.15 }, { 0.8, 0.2 }, { 1.0, 0.1 } } }
+    res[5] = { MOD_NAME .. '/daimanji-dropship/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.05 }, { 1.0, 0.05 } } }
+    res[6] = { MOD_NAME .. '/marspeople-builder/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.05 }, { 1.0, 0.05 } } }
+    res[7] = { MOD_NAME .. '/eye-ufo-b/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.05 }, { 0.8, 0.1 }, { 1.0, 0.1 } } }
 
     --Tier 3
-    res[8] = { MOD_NAME .. '/marspeople-fire/' .. level,     { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.15 } } }
-    res[9] = { MOD_NAME .. '/ufo/' .. level,                 { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.1 } } }
-    res[10] = { MOD_NAME .. '/daimanji-purpleball/' .. level,{ { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.03 } } }
-    res[11] = { MOD_NAME .. '/daimanji-thunderbolt/' .. level,{ { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.02 } } }
+    res[8] = { MOD_NAME .. '/marspeople-fire/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.15 } } }
+    res[9] = { MOD_NAME .. '/ufo/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.1 } } }
+    res[10] = { MOD_NAME .. '/daimanji-purpleball/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.03 } } }
+    res[11] = { MOD_NAME .. '/daimanji-thunderbolt/' .. level, { { 0.0, 0.0 }, { 0.2, 0.0 }, { 0.4, 0.0 }, { 0.6, 0.0 }, { 0.8, 0.0 }, { 1.0, 0.02 } } }
     return res
 end
 
-local collision_box = {{-1.2, -1.2}, {1.2, 1.2}}
+local collision_box = { { -1.2, -1.2 }, { 1.2, 1.2 } }
 local map_generator_bounding_box = { { -4, -4 }, { 4, 4 } }
-local selection_box = {{-1.5, -1.5}, {1.5, 1.5}}
+local selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 function ErmMarsPeople.make_exit_jp(level)
     level = level or 1
@@ -80,25 +79,25 @@ function ErmMarsPeople.make_exit_jp(level)
             type = "unit-spawner",
             name = MOD_NAME .. '/' .. name .. '/' .. level,
             localised_name = { 'entity-name.' .. MOD_NAME .. '/' .. name, level },
-            icon = "__erm_marspeople__/graphics/entity/icons/buildings/"..name..".png",
+            icon = "__erm_marspeople__/graphics/entity/icons/buildings/" .. name .. ".png",
             icon_size = 64,
             flags = { "placeable-player", "placeable-enemy" },
-            max_health = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier,  level),
+            max_health = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, level),
             order = MOD_NAME .. "-" .. name,
             subgroup = "enemies",
             vehicle_impact_sound = Base_Sound.generic_impact,
             resistances = {
-                { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-                { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-                { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance,  level) },
-                { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-                { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-                { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-                { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-                { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
+                { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+                { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+                { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, level) },
+                { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+                { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+                { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+                { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+                { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, level) }
             },
             map_color = ERM_UnitHelper.format_map_color(settings.startup['erm_marspeople-map-color'].value),
-            healing_per_tick = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier,  level),
+            healing_per_tick = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, level),
             collision_box = collision_box,
             map_generator_bounding_box = map_generator_bounding_box,
             selection_box = selection_box,
@@ -111,14 +110,14 @@ function ErmMarsPeople.make_exit_jp(level)
             animations = {
                 layers = {
                     {
-                        filename = "__erm_marspeople__/graphics/entity/buildings/".. name ..".png",
+                        filename = "__erm_marspeople__/graphics/entity/buildings/" .. name .. ".png",
                         width = 96,
                         height = 96,
                         frame_count = 2,
                         animation_speed = 0.1,
                     },
                     {
-                        filename = "__erm_marspeople__/graphics/entity/buildings/".. name ..".png",
+                        filename = "__erm_marspeople__/graphics/entity/buildings/" .. name .. ".png",
                         width = 96,
                         height = 96,
                         frame_count = 2,
@@ -131,14 +130,14 @@ function ErmMarsPeople.make_exit_jp(level)
             integration = {
                 layers = {
                     {
-                        filename = "__erm_marspeople__/graphics/entity/buildings/".. name ..".png",
+                        filename = "__erm_marspeople__/graphics/entity/buildings/" .. name .. ".png",
                         width = 96,
                         height = 96,
                         frame_count = 1,
                         animation_speed = 0.1
                     },
                     {
-                        filename = "__erm_marspeople__/graphics/entity/buildings/".. name ..".png",
+                        filename = "__erm_marspeople__/graphics/entity/buildings/" .. name .. ".png",
                         width = 96,
                         height = 96,
                         frame_count = 1,

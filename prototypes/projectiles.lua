@@ -4,7 +4,7 @@
 --- DateTime: 11/6/2021 2:07 PM
 ---
 
-require ("util")
+require("util")
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local fireutil = require('__base__/prototypes/fire-util')
 local sounds = require('__base__/prototypes/entity/sounds')
@@ -29,43 +29,41 @@ if marspeople_beams.ground_light_animations then
     marspeople_beams.ground_light_animations.body.tint = ERM_UnitTint.tint_green()
 end
 
-
 data:extend({
     ------- Laser Beam -----
     marspeople_beams,
     ------- Fire -------
     fireutil.add_basic_fire_graphics_and_effects_definitions(
-    {
-        type = "fire",
-        name = "marspeople-fire-flame",
-        flags = {"placeable-off-grid", "not-on-map"},
-        damage_per_tick = {amount = 4 / defines.time.second, type = "fire"},
-        maximum_damage_multiplier = 3,
-        damage_multiplier_increase_per_added_fuel = 1,
-        damage_multiplier_decrease_per_tick = 0.005,
+            {
+                type = "fire",
+                name = "marspeople-fire-flame",
+                flags = { "placeable-off-grid", "not-on-map" },
+                damage_per_tick = { amount = 4 / defines.time.second, type = "fire" },
+                maximum_damage_multiplier = 3,
+                damage_multiplier_increase_per_added_fuel = 1,
+                damage_multiplier_decrease_per_tick = 0.005,
 
-        spawn_entity = "fire-flame-on-tree",
+                spawn_entity = "fire-flame-on-tree",
 
-        spread_delay = 300,
-        spread_delay_deviation = 180,
-        maximum_spread_count = 100,
+                spread_delay = 300,
+                spread_delay_deviation = 180,
+                maximum_spread_count = 100,
 
-        emissions_per_second = 0.005,
+                emissions_per_second = 0.005,
 
-        initial_lifetime = 300,
-        lifetime_increase_by = 150,
-        lifetime_increase_cooldown = 4,
-        maximum_lifetime = 600,
-        delay_between_initial_flames = 10,
-        --initial_flame_count = 1,
-    }),
+                initial_lifetime = 300,
+                lifetime_increase_by = 150,
+                lifetime_increase_cooldown = 4,
+                maximum_lifetime = 600,
+                delay_between_initial_flames = 10,
+                --initial_flame_count = 1,
+            }),
     {
         type = "sticker",
         name = "marspeople-fire-sticker",
-        flags = {"not-on-map"},
+        flags = { "not-on-map" },
 
-        animation =
-        {
+        animation = {
             filename = "__base__/graphics/entity/fire-flame/fire-flame-13.png",
             line_length = 8,
             width = 60,
@@ -75,7 +73,7 @@ data:extend({
             animation_speed = 1,
             scale = 0.2,
             tint = { r = 0.5, g = 0.5, b = 0.5, a = 0.18 }, --{ r = 1, g = 1, b = 1, a = 0.35 },
-            shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1),
+            shift = math3d.vector2.mul({ -0.078125, -1.8125 }, 0.1),
             draw_as_glow = true
         },
 

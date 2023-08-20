@@ -16,7 +16,6 @@ local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 local ERM_DebugHelper = require('__enemyracemanager__/lib/debug_helper')
 local ERM_Config = require('__enemyracemanager__/lib/global_config')
 
-
 local enemy_autoplace = require("__enemyracemanager__/lib/enemy-autoplace-utils")
 
 local name = 'thunderbolt-turret'
@@ -70,18 +69,18 @@ function ErmMarsPeople.make_thunderbolt_turret(level)
     marspeople_thunderbolt_turret['name'] = MOD_NAME .. '/' .. name .. '/' .. level
     marspeople_thunderbolt_turret['localised_name'] = { 'entity-name.' .. MOD_NAME .. '/' .. name, level }
     marspeople_thunderbolt_turret['flag'] = { "placeable-player", "placeable-enemy" }
-    marspeople_thunderbolt_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier,  level)
-    marspeople_thunderbolt_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier,  level)
+    marspeople_thunderbolt_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, level)
+    marspeople_thunderbolt_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, level)
     marspeople_thunderbolt_turret['order'] = MOD_NAME .. "-" .. name
     marspeople_thunderbolt_turret['resistance'] = {
-        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance,  level) },
-        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance,  level) },
-        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance,  level) },
-        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance,  level) },
-        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance,  level) }
+        { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+        { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
+        { type = "physical", percent = ERM_UnitHelper.get_resistance(base_physical_resistance, incremental_physical_resistance, level) },
+        { type = "fire", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+        { type = "explosion", percent = ERM_UnitHelper.get_resistance(base_fire_resistance, incremental_fire_resistance, level) },
+        { type = "laser", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+        { type = "electric", percent = ERM_UnitHelper.get_resistance(base_electric_resistance, incremental_electric_resistance, level) },
+        { type = "cold", percent = ERM_UnitHelper.get_resistance(base_cold_resistance, incremental_cold_resistance, level) }
     }
     marspeople_thunderbolt_turret['map_color'] = ERM_UnitHelper.format_map_color(settings.startup['erm_marspeople-map-color'].value)
     marspeople_thunderbolt_turret['collision_box'] = collision_box
@@ -94,10 +93,10 @@ function ErmMarsPeople.make_thunderbolt_turret(level)
 
     -- Attack Changes
     marspeople_thunderbolt_turret['attack_parameters']['ammo_category'] = "marspeople-damage"
-    marspeople_thunderbolt_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level)
+    marspeople_thunderbolt_turret['attack_parameters']['cooldown'] = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed, level)
     marspeople_thunderbolt_turret['attack_parameters']['cooldown_deviation'] = 0.1
     marspeople_thunderbolt_turret['attack_parameters']['range'] = attack_range
-    marspeople_thunderbolt_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage,  level)
+    marspeople_thunderbolt_turret['attack_parameters']['damage_modifier'] = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, level)
 
     marspeople_thunderbolt_turret['attack_parameters']['ammo_type'] = {
         category = "marspeople-damage",

@@ -45,69 +45,69 @@ local addRaceSettings = function()
         race_settings = {}
     end
 
-    race_settings.race =  race_settings.race or MOD_NAME
-    race_settings.label = {'gui.label-erm_marspeople'}
-    race_settings.level =  race_settings.level or 1
-    race_settings.tier =  race_settings.tier or 1
-    race_settings.evolution_point =  race_settings.evolution_point or 0
-    race_settings.evolution_base_point =  race_settings.evolution_base_point or 0
+    race_settings.race = race_settings.race or MOD_NAME
+    race_settings.label = { 'gui.label-erm_marspeople' }
+    race_settings.level = race_settings.level or 1
+    race_settings.tier = race_settings.tier or 1
+    race_settings.evolution_point = race_settings.evolution_point or 0
+    race_settings.evolution_base_point = race_settings.evolution_base_point or 0
     race_settings.attack_meter = race_settings.attack_meter or 0
     race_settings.attack_meter_total = race_settings.attack_meter_total or 0
     race_settings.next_attack_threshold = race_settings.next_attack_threshold or 0
 
     race_settings.units = {
         { 'marspeople', 'miniufo' },
-        { 'eye-ufo-a', 'eye-ufo-b', 'marspeople-icy', 'daimanji-dropship', 'marspeople-builder'},
+        { 'eye-ufo-a', 'eye-ufo-b', 'marspeople-icy', 'daimanji-dropship', 'marspeople-builder' },
         { 'ufo', 'marspeople-fire', 'daimanji-purpleball', 'daimanji-thunderbolt' },
     }
     race_settings.turrets = {
-        {'laser-turret'},
-        {'thunderbolt-turret'},
+        { 'laser-turret' },
+        { 'thunderbolt-turret' },
         {},
     }
     race_settings.command_centers = {
-        {'tencore'},
+        { 'tencore' },
         {},
         {}
     }
     race_settings.support_structures = {
-        {'entrance_en','entrance_jp'},
-        {'exit_en','exit_jp'},
+        { 'entrance_en', 'entrance_jp' },
+        { 'exit_en', 'exit_jp' },
         {},
     }
     race_settings.timed_units = {
     }
     race_settings.flying_units = {
-        {'miniufo'},
-        {'eye-ufo-a','eye-ufo-b'},
-        {'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt'}
+        { 'miniufo' },
+        { 'eye-ufo-a', 'eye-ufo-b' },
+        { 'ufo', 'daimanji-purpleball', 'daimanji-thunderbolt' }
     }
     race_settings.dropship = 'daimanji-dropship'
     race_settings.droppable_units = {
-        {{ 'miniufo' }, {1}},
-        {{ 'marspeople-icy', 'miniufo', 'eye-ufo-a' }, {2, 1, 1}},
-        {{ 'marspeople-icy', 'marspeople-fire', 'ufo', 'miniufo', 'eye-ufo-a', 'eye-ufo-b' }, {2, 2, 1, 1, 1, 1}},
+        { { 'miniufo' }, { 1 } },
+        { { 'marspeople-icy', 'miniufo', 'eye-ufo-a' }, { 2, 1, 1 } },
+        { { 'marspeople-icy', 'marspeople-fire', 'ufo', 'miniufo', 'eye-ufo-a', 'eye-ufo-b' }, { 2, 2, 1, 1, 1, 1 } },
     }
     race_settings.construction_buildings = {
-        {{ 'shortrange-laser-turret'}, {1}},
-        {{ 'shortrange-laser-turret'}, {1}},
-        {{ 'shortrange-laser-turret','exit_en', 'exit_jp'}, {3,1,1}},
+        { { 'shortrange-laser-turret' }, { 1 } },
+        { { 'shortrange-laser-turret' }, { 1 } },
+        { { 'shortrange-laser-turret', 'exit_en', 'exit_jp' }, { 3, 1, 1 } },
     }
     race_settings.featured_groups = {
         -- Unit list, spawn ratio, unit attack point cost
-        {{'marspeople','miniufo', 'ufo'}, {2, 1, 1}, 25},
-        {{'marspeople','miniufo', 'ufo','daimanji-thunderbolt'}, {2, 2, 1, 1}, 25},
-        {{'marspeople','miniufo', 'ufo','daimanji-purpleball'}, {2, 2, 1, 1}, 25},
-        {{'marspeople','marspeople-icy', 'marspeople-fire'}, {2, 1, 1}, 25},
-        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-thunderbolt'}, {2, 2, 2, 1}, 30},
-        {{'marspeople','marspeople-icy', 'marspeople-fire','daimanji-purpleball'}, {2, 2, 2, 1}, 30}
+        { { 'marspeople', 'miniufo', 'ufo' }, { 2, 1, 1 }, 25 },
+        { { 'marspeople', 'miniufo', 'ufo', 'daimanji-thunderbolt' }, { 2, 2, 1, 1 }, 25 },
+        { { 'marspeople', 'miniufo', 'ufo', 'daimanji-purpleball' }, { 2, 2, 1, 1 }, 25 },
+        { { 'marspeople', 'marspeople-icy', 'marspeople-fire' }, { 2, 1, 1 }, 25 },
+        { { 'marspeople', 'marspeople-icy', 'marspeople-fire', 'daimanji-thunderbolt' }, { 2, 2, 2, 1 }, 30 },
+        { { 'marspeople', 'marspeople-icy', 'marspeople-fire', 'daimanji-purpleball' }, { 2, 2, 2, 1 }, 30 }
     }
     race_settings.featured_flying_groups = {
-        {{'miniufo', 'ufo'}, {2, 1}, 50},
-        {{'eye-ufo-a', 'eye-ufo-b'}, {1, 1}, 60},
-        {{'daimanji-purpleball', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 75},
-        {{'daimanji-thunderbolt', 'ufo','eye-ufo-a', 'eye-ufo-b'}, {1,2,2,2}, 75},
-        {{'daimanji-thunderbolt', 'daimanji-purpleball', 'eye-ufo-a', 'eye-ufo-b'}, {1, 1,2,2}, 60}
+        { { 'miniufo', 'ufo' }, { 2, 1 }, 50 },
+        { { 'eye-ufo-a', 'eye-ufo-b' }, { 1, 1 }, 60 },
+        { { 'daimanji-purpleball', 'ufo', 'eye-ufo-a', 'eye-ufo-b' }, { 1, 2, 2, 2 }, 75 },
+        { { 'daimanji-thunderbolt', 'ufo', 'eye-ufo-a', 'eye-ufo-b' }, { 1, 2, 2, 2 }, 75 },
+        { { 'daimanji-thunderbolt', 'daimanji-purpleball', 'eye-ufo-a', 'eye-ufo-b' }, { 1, 1, 2, 2 }, 60 }
     }
 
     if game.active_mods['Krastorio2'] then
@@ -134,8 +134,7 @@ Event.on_configuration_changed(function(event)
     addRaceSettings()
 end)
 
-local attack_functions =
-{
+local attack_functions = {
     [MARSPEOPLE_DROPSHIP_ATTACK] = function(args)
         CustomAttacks.process_dropship(args)
     end,
@@ -145,7 +144,7 @@ local attack_functions =
 }
 
 Event.register(defines.events.on_script_trigger_effect, function(event)
-    if  attack_functions[event.effect_id] and
+    if attack_functions[event.effect_id] and
             CustomAttacks.valid(event, MOD_NAME)
     then
         attack_functions[event.effect_id](event)
