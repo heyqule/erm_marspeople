@@ -104,7 +104,7 @@ function ErmMarsPeople.make_exit_en(level)
             pollution_absorption_absolute = pollution_absorption_absolute,
             pollution_absorption_proportional = 0.01,
             corpse = "lab-remnants",
-            dying_explosion = "marspeople-ground-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-ground-explosion",
             max_count_of_owned_units = max_count_of_owned_units,
             max_friends_around_to_spawn = max_friends_around_to_spawn,
             animations = {
