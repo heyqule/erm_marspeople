@@ -117,9 +117,9 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'daimanji-thunderbolt',
+                            projectile = MOD_NAME.."/daimanji-thunderbolt",
                             starting_speed = 0.5,
-                            max_range = ERM_Config.get_max_projectile_range(2),
+                            max_range = ERM_Config.get_max_projectile_range(),
                         }
                     }
                 },
@@ -233,7 +233,7 @@ function ErmMarsPeople.make_daimanji_thunderbolt(level)
                     },
                 }
             },
-            dying_explosion = "marspeople-ground-large-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-ground-large-explosion",
             dying_sound = ErmMarsPeople_Sound.electric_attack_attack(0.8),
             corpse = name .. '-corpse'
         },

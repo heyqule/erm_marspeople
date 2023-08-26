@@ -104,7 +104,7 @@ function ErmMarsPeople.make_thunderbolt_turret(level)
             type = "direct",
             action_delivery = {
                 type = "projectile",
-                projectile = 'daimanji-thunderbolt',
+                projectile = MOD_NAME.."/daimanji-thunderbolt",
                 starting_speed = 0.5,
                 max_range = ERM_Config.get_max_projectile_range(),
             }

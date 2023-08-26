@@ -236,7 +236,7 @@ function ErmMarsPeople.make_daimanji_purpleball(level)
                     },
                 }
             },
-            dying_explosion = "marspeople-ground-large-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-ground-large-explosion",
             dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.8),
             corpse = name .. '-corpse'
         },

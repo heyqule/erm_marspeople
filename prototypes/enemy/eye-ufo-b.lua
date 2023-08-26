@@ -111,7 +111,7 @@ function ErmMarsPeople.make_eye_ufo_b(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'eye-ufo-projectile',
+                            projectile = MOD_NAME.."eye-ufo-projectile",
                             starting_speed = 0.3,
                             max_range = ERM_Config.get_max_projectile_range(),
                         }
@@ -185,7 +185,7 @@ function ErmMarsPeople.make_eye_ufo_b(level)
                     }
                 }
             },
-            dying_explosion = "marspeople-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-explosion",
             dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.8),
             corpse = name .. '-corpse'
         },

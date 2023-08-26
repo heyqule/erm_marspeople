@@ -34,6 +34,33 @@ table.insert(data.erm_spawn_specs, {
     temperature = 2, --1,2,3 (1 cold, 2. normal, 3 hot)
 })
 
+
+data.erm_menu_replacement = data.erm_menu_replacement or {}
+data.erm_menu_replacement[MOD_NAME] = {
+    race = MOD_NAME,
+    level = 3,
+    ["unit"] = {
+        ["small-biter"] = 'marspeople',
+        ["small-spitter"] = 'marspeople-icy',
+        ["medium-biter"] = 'miniufo',
+        ["medium-spitter"] = 'miniufo',
+        ["big-biter"] = 'ufo',
+        ["big-spitter"] = 'ufo',
+        ["behemoth-biter"] = "daimanji-purpleball",
+        ["behemoth-spitter"] = "daimanji-purpleball",
+    },
+    ["turret"] = {
+        ["small-worm-turret"] = 'thunderbolt-turret',
+        ["medium-worm-turret"] = 'thunderbolt-turret',
+        ["big-worm-turret"] = 'laser-turret',
+        ["behemoth-worm-turret"] = 'laser-turret',
+    },
+    ["unit-spawner"] = {
+        ["biter-spawner"] = 'entrance_jp',
+        ["spitter-spawner"] = 'exit_jp',
+    },
+}
+
 require "prototypes.projectiles"
 require "prototypes.building.tencore"
 require "prototypes.building.entrance_jp"

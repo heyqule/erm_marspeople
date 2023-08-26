@@ -110,9 +110,9 @@ function ErmMarsPeople.make_miniufo(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'mini-ufo-projectile',
+                            projectile =  MOD_NAME.."/mini-ufo-projectile",
                             starting_speed = 0.3,
-                            max_range = ERM_Config.get_max_projectile_range(2)
+                            max_range = ERM_Config.get_max_projectile_range()
                         }
                     }
                 },

@@ -13,7 +13,7 @@ local math3d = require "math3d"
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
 
 local marspeople_beams = util.table.deepcopy(data.raw['beam']['laser-beam'])
-marspeople_beams.name = 'marspeople-laser-beam'
+marspeople_beams.name = MOD_NAME.."/marspeople-laser-beam"
 marspeople_beams.head.tint = ERM_UnitTint.tint_green()
 marspeople_beams.tail.tint = ERM_UnitTint.tint_green()
 marspeople_beams.body[1].tint = ERM_UnitTint.tint_green()
@@ -36,7 +36,7 @@ data:extend({
     fireutil.add_basic_fire_graphics_and_effects_definitions(
             {
                 type = "fire",
-                name = "marspeople-fire-flame",
+                name = MOD_NAME.."/fire-flame",
                 flags = { "placeable-off-grid", "not-on-map" },
                 damage_per_tick = { amount = 4 / defines.time.second, type = "fire" },
                 maximum_damage_multiplier = 3,
@@ -60,7 +60,7 @@ data:extend({
             }),
     {
         type = "sticker",
-        name = "marspeople-fire-sticker",
+        name = MOD_NAME.."/fire-sticker",
         flags = { "not-on-map" },
 
         animation = {
@@ -86,7 +86,7 @@ data:extend({
     -------- Projectile --------
     {
         type = "projectile",
-        name = "mini-ufo-projectile",
+        name =  MOD_NAME.."/mini-ufo-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -113,7 +113,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "ufo-projectile",
+        name = MOD_NAME.."/ufo-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -123,7 +123,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-explosion"
+                        entity_name = MOD_NAME.."/marspeople-explosion"
                     },
                     {
                         type = "damage",
@@ -161,7 +161,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "eye-ufo-projectile",
+        name = MOD_NAME.."eye-ufo-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -171,7 +171,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-explosion"
+                        entity_name = MOD_NAME.."/marspeople-explosion"
                     },
                     {
                         type = "damage",
@@ -209,7 +209,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "daimanji-purple-projectile",
+        name =  MOD_NAME.."/daimanji-purple-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -219,7 +219,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-purple-explosion"
+                        entity_name =  MOD_NAME.."/marspeople-purple-explosion"
                     },
                     {
                         type = "damage",
@@ -257,7 +257,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "daimanji-thunderbolt",
+        name =  MOD_NAME.."/daimanji-thunderbolt",
         flags = { "not-on-map" },
         acceleration = 0.05,
         action = {
@@ -267,7 +267,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-thunderbolt-explosion"
+                        entity_name =  MOD_NAME.."/marspeople-thunderbolt-explosion"
                     },
                     {
                         type = "damage",
@@ -312,7 +312,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "marspeople-projectile",
+        name = MOD_NAME.."/marspeople-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -322,7 +322,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-projectile-hit"
+                        entity_name =  MOD_NAME.."/marspeople-projectile-hit"
                     },
                     {
                         type = "damage",
@@ -348,7 +348,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "marspeople-fire-projectile",
+        name = MOD_NAME.."/marspeople-fire-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -358,17 +358,17 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-projectile-hit"
+                        entity_name =  MOD_NAME.."/marspeople-projectile-hit"
                     },
                     {
                         type = "create-fire",
-                        entity_name = "marspeople-fire-flame",
+                        entity_name = MOD_NAME.."/fire-flame",
                         show_in_tooltip = true,
                         initial_ground_flame_count = 2
                     },
                     {
                         type = "create-sticker",
-                        sticker = "marspeople-fire-sticker",
+                        sticker = MOD_NAME.."/fire-sticker",
                         show_in_tooltip = true
                     }
                 }
@@ -385,7 +385,7 @@ data:extend({
     },
     {
         type = "projectile",
-        name = "marspeople-icy-projectile",
+        name = MOD_NAME.."/marspeople-icy-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
         action = {
@@ -395,7 +395,7 @@ data:extend({
                 target_effects = {
                     {
                         type = "create-entity",
-                        entity_name = "marspeople-icy-projectile-hit"
+                        entity_name =  MOD_NAME.."/marspeople-icy-projectile-hit"
                     },
                     {
                         type = "damage",
@@ -422,7 +422,7 @@ data:extend({
     --- Explosions
     {
         type = "explosion",
-        name = "marspeople-projectile-hit",
+        name =  MOD_NAME.."/marspeople-projectile-hit",
         flags = { "not-on-map" },
         animations = {
             {
@@ -438,7 +438,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-icy-projectile-hit",
+        name =  MOD_NAME.."/marspeople-icy-projectile-hit",
         flags = { "not-on-map" },
         animations = {
             {
@@ -454,7 +454,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-explosion",
+        name = MOD_NAME.."/marspeople-explosion",
         sound = sounds.medium_explosion(0.8),
         flags = { "not-on-map" },
         animations = {
@@ -471,7 +471,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-purple-explosion",
+        name =  MOD_NAME.."/marspeople-purple-explosion",
         flags = { "not-on-map" },
         sound = sounds.medium_explosion(0.8),
         animations = {
@@ -488,7 +488,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-ground-explosion",
+        name =  MOD_NAME.."/marspeople-ground-explosion",
         sound = sounds.large_explosion(1.0),
         flags = { "not-on-map" },
         animations = {
@@ -505,7 +505,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-ground-large-explosion",
+        name = MOD_NAME.."/marspeople-ground-large-explosion",
         sound = sounds.large_explosion(1.0),
         flags = { "not-on-map" },
         animations = {
@@ -523,7 +523,7 @@ data:extend({
     },
     {
         type = "explosion",
-        name = "marspeople-thunderbolt-explosion",
+        name =  MOD_NAME.."/marspeople-thunderbolt-explosion",
         flags = { "not-on-map" },
         animations = {
             {

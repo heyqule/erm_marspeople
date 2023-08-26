@@ -106,7 +106,7 @@ function ErmMarsPeople.make_laser_turret(level)
             type = "direct",
             action_delivery = {
                 type = "beam",
-                beam = "marspeople-laser-beam",
+                beam = MOD_NAME.."/marspeople-laser-beam",
                 max_length = ERM_Config.get_max_projectile_range(),
                 duration = 20,
                 source_offset = { 0, -1.31439 },
@@ -169,7 +169,7 @@ function ErmMarsPeople.make_laser_turret(level)
             type = "direct",
             action_delivery = {
                 type = "beam",
-                beam = "marspeople-laser-beam",
+                beam = MOD_NAME.."/marspeople-laser-beam",
                 max_length = ERM_Config.get_max_projectile_range(),
                 duration = 20,
                 source_offset = { 0, -1.31439 },

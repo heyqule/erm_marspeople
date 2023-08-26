@@ -116,7 +116,7 @@ function ErmMarsPeople.make_daimanji_dropship(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'daimanji-purple-projectile',
+                            projectile =  MOD_NAME.."/daimanji-purple-projectile",
                             starting_speed = 0.2,
                             max_range = ERM_Config.get_max_projectile_range(),
                         }
@@ -228,7 +228,7 @@ function ErmMarsPeople.make_daimanji_dropship(level)
                     }
                 }
             },
-            dying_explosion = "marspeople-ground-large-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-ground-large-explosion",
             dying_sound = ErmMarsPeople_Sound.laser_attack(0.8),
             corpse = name .. '-corpse'
         },

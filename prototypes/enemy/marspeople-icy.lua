@@ -112,7 +112,7 @@ function ErmMarsPeople.make_marspeople_icy(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'marspeople-icy-projectile',
+                            projectile = MOD_NAME.."/marspeople-icy-projectile",
                             starting_speed = 0.1,
                             max_range = ERM_Config.get_max_projectile_range(),
                         }

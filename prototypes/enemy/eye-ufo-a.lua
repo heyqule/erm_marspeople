@@ -109,7 +109,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                         type = "direct",
                         action_delivery = {
                             type = "beam",
-                            beam = "marspeople-laser-beam",
+                            beam = MOD_NAME.."/marspeople-laser-beam",
                             max_length = ERM_Config.get_max_projectile_range(),
                             duration = 20
                         }
@@ -171,7 +171,7 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                     }
                 }
             },
-            dying_explosion = "marspeople-explosion",
+            dying_explosion = MOD_NAME.."/marspeople-explosion",
             dying_sound = ErmMarsPeople_Sound.mini_ufo_death(0.8),
             corpse = name .. '-corpse'
         },

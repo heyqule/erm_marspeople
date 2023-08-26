@@ -111,7 +111,7 @@ function ErmMarsPeople.make_marspeople(level)
                         type = "direct",
                         action_delivery = {
                             type = "projectile",
-                            projectile = 'marspeople-projectile',
+                            projectile = MOD_NAME.."/marspeople-projectile",
                             starting_speed = 0.1,
                             max_range = ERM_Config.get_max_projectile_range(),
                         }
