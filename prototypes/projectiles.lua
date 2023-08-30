@@ -11,6 +11,7 @@ local sounds = require('__base__/prototypes/entity/sounds')
 local math3d = require "math3d"
 
 local ERM_UnitTint = require('__enemyracemanager__/lib/rig/unit_tint')
+local ERMDataHelper = require('__enemyracemanager__/lib/rig/data_helper')
 
 local marspeople_beams = util.table.deepcopy(data.raw['beam']['laser-beam'])
 marspeople_beams.name = MOD_NAME.."/marspeople-laser-beam"
@@ -279,7 +280,7 @@ data:extend({
                         action = {
                             type = "area",
                             force = 'not-same',
-                            radius = 3,
+                            radius = 4,
                             ignore_collision_condition = true,
                             action_delivery = {
                                 type = "instant",
@@ -315,6 +316,11 @@ data:extend({
         name = MOD_NAME.."/marspeople-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
+        direction_only = true,
+        collision_box = {{-0.5,-0.5},{0.5,0.5}},
+        force_condition = "not-same",
+        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
+        hit_at_collision_position = true,
         action = {
             type = "direct",
             action_delivery = {
@@ -351,6 +357,10 @@ data:extend({
         name = MOD_NAME.."/marspeople-fire-projectile",
         flags = { "not-on-map" },
         acceleration = 0.01,
+        direction_only = true,
+        collision_box = {{-0.5,-0.5},{0.5,0.5}},
+        force_condition = "not-same",
+        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
         action = {
             type = "direct",
             action_delivery = {
@@ -359,6 +369,11 @@ data:extend({
                     {
                         type = "create-entity",
                         entity_name =  MOD_NAME.."/marspeople-projectile-hit"
+                    },
+                    {
+                        type = "damage",
+                        damage = { amount = 10, type = "explosion" },
+                        apply_damage_to_trees = true
                     },
                     {
                         type = "create-fire",
@@ -387,6 +402,10 @@ data:extend({
         type = "projectile",
         name = MOD_NAME.."/marspeople-icy-projectile",
         flags = { "not-on-map" },
+        direction_only = true,
+        collision_box = {{-0.5,-0.5},{0.5,0.5}},
+        force_condition = "not-same",
+        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
         acceleration = 0.01,
         action = {
             type = "direct",

@@ -33,7 +33,7 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 
 local base_laser_damage = 1
-local incremental_laser_damage = 4
+local incremental_laser_damage = 7
 
 -- Handles Attack Speed
 
@@ -47,7 +47,7 @@ local incremental_movement_speed = 0.1
 
 -- Misc settings
 local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
-local pollution_to_join_attack = 50
+local pollution_to_join_attack = 150
 local distraction_cooldown = 300
 
 -- Animation Settings

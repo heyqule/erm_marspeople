@@ -10,8 +10,8 @@ local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople-icy'
 
-local hitpoint = 100
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.5
+local hitpoint = 150
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 
 -- Handles acid and poison resistance
@@ -47,7 +47,7 @@ local incremental_movement_speed = 0.1
 
 -- Misc settings
 local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
-local pollution_to_join_attack = 10
+local pollution_to_join_attack = 50
 local distraction_cooldown = 300
 
 -- Animation Settings

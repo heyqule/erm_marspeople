@@ -11,7 +11,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'miniufo'
 
 local hitpoint = 100
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 3
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 4
 
 
 -- Handles acid and poison resistance

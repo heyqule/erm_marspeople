@@ -11,7 +11,7 @@ local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'marspeople-fire'
 
 local hitpoint = 200
-local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2.25
+local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 2
 
 
 -- Handles acid and poison resistance
@@ -33,7 +33,7 @@ local incremental_cold_resistance = 80
 -- Handles acid damages
 
 local base_damage = 1
-local incremental_damage = 9
+local incremental_damage = 10
 
 -- Handles Attack Speed
 
@@ -47,7 +47,7 @@ local incremental_movement_speed = 0.1
 
 -- Misc settings
 local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
-local pollution_to_join_attack = 10
+local pollution_to_join_attack = 50
 local distraction_cooldown = 300
 
 -- Animation Settings
