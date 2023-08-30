@@ -5,8 +5,8 @@ Date: 2023-09-01
   Changes:
     - Spawn table tweaks
     - Pollution to join attack tweaks
-    - Mars people projectiles now blocks by walls. They deal higher damage.
-    - Buff Mars people damage
+    - Mars people's gun projectiles now blocks by walls. They deal higher damage.
+    - Slightly buffed overall damage.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.1
