@@ -3,7 +3,7 @@ Version: 1.5.2
 Date: 2023-09-01
 
   Changes:
-    - Spawn table tweaks
+    - early game unit spawn table tweaks
     - Pollution to join attack tweaks
     - Mars people's gun projectiles now blocks by walls. They deal higher damage.
     - Slightly buffed overall damage.
