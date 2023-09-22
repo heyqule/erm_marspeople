@@ -69,7 +69,7 @@ function ErmMarsPeople.make_thunderbolt_turret(level)
     marspeople_thunderbolt_turret['flag'] = { "placeable-player", "placeable-enemy" }
     marspeople_thunderbolt_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, level)
     marspeople_thunderbolt_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, level)
-    marspeople_thunderbolt_turret['order'] = MOD_NAME .. "-" .. name
+    marspeople_thunderbolt_turret['order'] = MOD_NAME .. '/' .. name .. '/'.. level
     marspeople_thunderbolt_turret['resistance'] = {
         { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
         { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },

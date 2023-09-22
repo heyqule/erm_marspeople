@@ -83,7 +83,7 @@ function ErmMarsPeople.make_exit_jp(level)
             icon_size = 64,
             flags = { "placeable-player", "placeable-enemy" },
             max_health = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, level),
-            order = MOD_NAME .. "-" .. name,
+            order = MOD_NAME .. '/' .. name .. '/'.. level,
             subgroup = "enemies",
             vehicle_impact_sound = Base_Sound.generic_impact,
             resistances = {

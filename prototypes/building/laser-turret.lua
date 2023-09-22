@@ -76,7 +76,7 @@ function ErmMarsPeople.make_laser_turret(level)
     marspeople_laser_turret['flag'] = { "placeable-player", "placeable-enemy" }
     marspeople_laser_turret['max_health'] = ERM_UnitHelper.get_building_health(hitpoint, hitpoint * max_hitpoint_multiplier, level)
     marspeople_laser_turret['healing_per_tick'] = ERM_UnitHelper.get_building_healing(hitpoint, max_hitpoint_multiplier, level)
-    marspeople_laser_turret['order'] = MOD_NAME .. "-" .. name
+    marspeople_laser_turret['order'] = MOD_NAME .. '/' .. name .. '/'.. level
     marspeople_laser_turret['resistance'] = {
         { type = "acid", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
         { type = "poison", percent = ERM_UnitHelper.get_resistance(base_acid_resistance, incremental_acid_resistance, level) },
