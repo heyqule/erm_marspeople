@@ -63,6 +63,9 @@ local selection_box = { { -1, -1 }, { 1, 1 } }
 function ErmMarsPeople.make_laser_turret(level)
     level = level or 1
 
+    local attack_range = ERM_UnitHelper.get_attack_range(level) + 16
+    local shortrange_attack_range =  ERM_UnitHelper.get_attack_range(level)
+
     local marspeople_laser_turret = util.table.deepcopy(data.raw['electric-turret']['laser-turret'])
 
     -- Base changes

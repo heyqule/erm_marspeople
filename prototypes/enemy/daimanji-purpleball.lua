@@ -45,13 +45,11 @@ local incremental_laser_damage = 4
 local base_attack_speed = 180
 local incremental_attack_speed = 90
 
-local attack_range = ERM_Config.get_max_attack_range()
 
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
 local pollution_to_join_attack = 250
 local distraction_cooldown = 300
 
@@ -63,6 +61,8 @@ local selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 function ErmMarsPeople.make_daimanji_dropship(level)
     level = level or 1
+    local attack_range = ERM_UnitHelper.get_attack_range(level)
+    local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
 
     data:extend({
         {

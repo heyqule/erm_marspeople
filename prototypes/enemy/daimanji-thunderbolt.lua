@@ -64,6 +64,8 @@ local selection_box = { { -1.5, -1.5 }, { 1.5, 1.5 } }
 
 function ErmMarsPeople.make_daimanji_thunderbolt(level)
     level = level or 1
+    local attack_range = ERM_UnitHelper.get_attack_range(level)
+    local vision_distance = ERM_UnitHelper.get_vision_distance(attack_range)
 
     data:extend({
         {
