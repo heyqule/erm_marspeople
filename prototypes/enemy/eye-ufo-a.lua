@@ -38,13 +38,13 @@ local incremental_laser_damage = 7
 -- Handles Attack Speed
 
 local base_attack_speed = 120
-local incremental_attack_speed = 60
+local incremental_attack_speed = 75
 
 local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local pollution_to_join_attack = 150
+local pollution_to_join_attack = 120
 local distraction_cooldown = 300
 
 -- Animation Settings
@@ -98,9 +98,8 @@ function ErmMarsPeople.make_eye_ufo_a(level)
                 ammo_category = 'marspeople-damage',
                 range = attack_range,
                 min_attack_distance = attack_range - 3,
-                cooldown = 0,
-                --cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level),
-                --cooldown_deviation = 0.1,
+                cooldown = ERM_UnitHelper.get_attack_speed(base_attack_speed, incremental_attack_speed,  level),
+                cooldown_deviation = 0.1,
                 damage_modifier = ERM_UnitHelper.get_damage(base_laser_damage, incremental_laser_damage, level),
                 ammo_type = {
                     category = "marspeople-damage",

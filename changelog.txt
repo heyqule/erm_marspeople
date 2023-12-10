@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.4
+Date: 2023-12-10
+
+  Changes:
+    - Marspeople pollution_to_join_attack from 5 to 6
+    - Daimanji Dropship pollution_to_join_attack from 150 to 120
+    - Marspeople builder pollution_to_join_attack from 150 to 100
+    - Marspeople base health decrease from 100 to 80
+    - MiniUFO base health increase from 100 to 120
+
+  Bugfixes:
+    - Fixed ground units projectiles not hitting belt.
+    - Fixed eye-ufo-a has 0 cooldown.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.5.3
 Date: 2023-09-22
 

@@ -319,8 +319,7 @@ data:extend({
         direction_only = true,
         collision_box = {{-0.5,-0.5},{0.5,0.5}},
         force_condition = "not-same",
-        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
-        hit_at_collision_position = true,
+        hit_collision_mask = {"player-layer", "train-layer","transport-belt-layer", ERMDataHelper.getFlyingLayerName()},
         action = {
             type = "direct",
             action_delivery = {
@@ -360,7 +359,7 @@ data:extend({
         direction_only = true,
         collision_box = {{-0.5,-0.5},{0.5,0.5}},
         force_condition = "not-same",
-        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
+        hit_collision_mask = {"player-layer", "train-layer","transport-belt-layer", ERMDataHelper.getFlyingLayerName()},
         action = {
             type = "direct",
             action_delivery = {
@@ -405,7 +404,7 @@ data:extend({
         direction_only = true,
         collision_box = {{-0.5,-0.5},{0.5,0.5}},
         force_condition = "not-same",
-        hit_collision_mask = {"player-layer", "train-layer", ERMDataHelper.getFlyingLayerName()},
+        hit_collision_mask = {"player-layer", "train-layer", "transport-belt-layer", ERMDataHelper.getFlyingLayerName()},
         acceleration = 0.01,
         action = {
             type = "direct",

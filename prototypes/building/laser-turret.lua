@@ -46,7 +46,7 @@ local incremental_cold_resistance = 65
 -- Handles laser damage multipliers
 
 local base_laser_damage = 3
-local incremental_laser_damage = 12
+local incremental_laser_damage = 22
 
 -- Handles Attack Speed
 

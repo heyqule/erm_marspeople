@@ -10,7 +10,7 @@ local ErmMarsPeople_Sound = require('__erm_marspeople__/prototypes/sound')
 local Sprites = require('__stdlib__/stdlib/data/modules/sprites')
 local name = 'miniufo'
 
-local hitpoint = 100
+local hitpoint = 120
 local max_hitpoint_multiplier = settings.startup["enemyracemanager-max-hitpoint-multipliers"].value * 4
 
 
@@ -45,7 +45,7 @@ local base_movement_speed = 0.1
 local incremental_movement_speed = 0.1
 
 -- Misc settings
-local pollution_to_join_attack = 15
+local pollution_to_join_attack = 12
 local distraction_cooldown = 300
 
 -- Animation Settings
