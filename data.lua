@@ -109,3 +109,8 @@ for i = 1, max_level do
     ErmMarsPeople.make_thunderbolt_turret(i)
 end
 
+data.erm_land_scout = data.erm_land_scout or {}
+data.erm_land_scout[MOD_NAME] = 'marspeople'
+
+data.erm_aerial_scout = data.erm_aerial_scout or {}
+data.erm_aerial_scout[MOD_NAME] = 'miniufo'
