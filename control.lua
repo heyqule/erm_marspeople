@@ -110,10 +110,6 @@ local addRaceSettings = function()
         { { 'daimanji-thunderbolt', 'daimanji-purpleball', 'eye-ufo-a', 'eye-ufo-b' }, { 1, 1, 2, 2 }, 60 }
     }
 
-    if game.active_mods['Krastorio2'] then
-        race_settings.enable_k2_creep = settings.startup['erm_marspeople-k2-creep'].value
-    end
-
     remote.call('enemyracemanager', 'register_race', race_settings)
 
     CustomAttacks.get_race_settings(MOD_NAME, true)
